@@ -90,7 +90,7 @@
               @click="selectPlatform(platform.platform_id)"
               class="platform-tab"
             >
-              月台 {{ platform.platform_id }}
+              {{ getPlatformDestinations(platform) }}
             </button>
           </div>
           
@@ -369,6 +369,31 @@ const selectedPlatformData = computed(() => {
   if (!selectedPlatform.value || !platformData.value) return null
   return platformData.value.find(p => p.platform_id === selectedPlatform.value)
 })
+
+// Get unique destination names for a platform
+const getPlatformDestinations = (platform: any): string => {
+  if (!platform || !platform.route_list || platform.route_list.length === 0) {
+    return `月台 ${platform.platform_id}`
+  }
+  
+  // Extract unique destination names from route_list
+  const destinations = [...new Set(
+    platform.route_list.map((route: any) => route.dest_ch).filter(Boolean)
+  )]
+  
+  // If no destinations found, fallback to platform number
+  if (destinations.length === 0) {
+    return `月台 ${platform.platform_id}`
+  }
+  
+  // For better display, limit to 2 destinations and add "等" if more
+  if (destinations.length > 2) {
+    return `${destinations.slice(0, 2).join(', ')}等`
+  }
+  
+  // Join multiple destinations with comma
+  return destinations.join(', ')
+}
 
 // Methods
 const selectRegion = (regionId: string) => {
@@ -1464,16 +1489,18 @@ onBeforeUnmount(() => {
 }
 
 .platform-tab {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1rem;
   border: none;
   background: transparent;
   color: var(--color-text-secondary);
   cursor: pointer;
   font-weight: 500;
-  font-size: 1rem; /* 增大月台標籤字體從 0.9rem */
+  font-size: 0.9rem; /* Adjusted for longer destination names */
   transition: all 0.2s ease;
   white-space: nowrap;
   border-bottom: 3px solid transparent;
+  min-width: fit-content;
+  text-align: center;
 }
 
 .platform-tab:hover {

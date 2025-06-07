@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRT Platform Destinations Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .platform-tab { 
+            display: inline-block; 
+            padding: 10px 15px; 
+            margin: 5px; 
+            background: #e3f2fd; 
+            border: 2px solid #2196f3; 
+            border-radius: 20px; 
+            color: #1976d2;
+            font-weight: 500;
+        }
+        .platform-tab.old { background: #ffebee; border-color: #f44336; color: #c62828; }
+        .section { margin: 20px 0; padding: 15px; border-left: 4px solid #2196f3; background: #f8f9fa; }
+        h2 { color: #1976d2; margin-top: 0; }
+        .comparison { display: flex; gap: 20px; align-items: center; margin: 10px 0; }
+        .arrow { font-size: 24px; color: #4caf50; }
+        code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚋 LRT Platform Display Update</h1>
+        
+        <div class="section">
+            <h2>✅ Implementation Complete</h2>
+            <p>The LRT platform tabs now display <strong>destination names</strong> instead of platform numbers!</p>
+        </div>
+
+        <div class="section">
+            <h2>🔄 Before vs After</h2>
+            
+            <div class="comparison">
+                <span class="platform-tab old">月台 1</span>
+                <span class="arrow">→</span>
+                <span class="platform-tab">元朗, 兆康</span>
+            </div>
+            
+            <div class="comparison">
+                <span class="platform-tab old">月台 2</span>
+                <span class="arrow">→</span>
+                <span class="platform-tab">屯門碼頭</span>
+            </div>
+            
+            <div class="comparison">
+                <span class="platform-tab old">月台 3</span>
+                <span class="arrow">→</span>
+                <span class="platform-tab">友愛, 天水圍等</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Key Features</h2>
+            <ul>
+                <li><strong>Smart destination extraction:</strong> Pulls unique destinations from API <code>route_list</code></li>
+                <li><strong>Multiple destination handling:</strong> Shows up to 2 destinations + "等" if more</li>
+                <li><strong>Fallback support:</strong> Shows "月台 X" if no destinations available</li>
+                <li><strong>Responsive design:</strong> Adjusted styling for longer destination names</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Technical Changes</h2>
+            <p><strong>Added function:</strong> <code>getPlatformDestinations(platform)</code></p>
+            <p><strong>Modified template:</strong> <code>{{ getPlatformDestinations(platform) }}</code></p>
+            <p><strong>Enhanced CSS:</strong> Better spacing and typography for destination names</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 API Data Structure</h2>
+            <p>The function processes this structure from the LRT API:</p>
+            <pre style="background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto;">
+platform_list: [
+  {
+    platform_id: "1",
+    route_list: [
+      { route_no: "614", dest_ch: "元朗", dest_en: "Yuen Long" },
+      { route_no: "507", dest_ch: "兆康", dest_en: "Siu Hong" }
+    ]
+  }
+]</pre>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; color: #666;">
+            <p>🎉 <strong>Ready to test!</strong> Navigate to a LRT station to see the new destination display in action.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple demo of the function logic
+        function getPlatformDestinations(platform) {
+            if (!platform || !platform.route_list || platform.route_list.length === 0) {
+                return `月台 ${platform.platform_id}`;
+            }
+            
+            const destinations = [...new Set(
+                platform.route_list.map(route => route.dest_ch).filter(Boolean)
+            )];
+            
+            if (destinations.length === 0) {
+                return `月台 ${platform.platform_id}`;
+            }
+            
+            if (destinations.length > 2) {
+                return `${destinations.slice(0, 2).join(', ')}等`;
+            }
+            
+            return destinations.join(', ');
+        }
+
+        // Test data
+        const testPlatforms = [
+            {
+                platform_id: "1",
+                route_list: [
+                    { route_no: "614", dest_ch: "元朗" },
+                    { route_no: "507", dest_ch: "兆康" }
+                ]
+            },
+            {
+                platform_id: "2", 
+                route_list: [
+                    { route_no: "610", dest_ch: "屯門碼頭" }
+                ]
+            },
+            {
+                platform_id: "3",
+                route_list: [
+                    { route_no: "751", dest_ch: "友愛" },
+                    { route_no: "705", dest_ch: "天水圍" },
+                    { route_no: "706", dest_ch: "元朗" }
+                ]
+            }
+        ];
+
+        // Log test results
+        console.log('Platform Destination Tests:');
+        testPlatforms.forEach(platform => {
+            console.log(`Platform ${platform.platform_id}: "${getPlatformDestinations(platform)}"`);
+        });
+    </script>
+</body>
+</html>
