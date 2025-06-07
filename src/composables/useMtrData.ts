@@ -11,7 +11,7 @@ interface UseMtrDataReturn {
 }
 
 // Cache configuration
-const CACHE_DURATION = 30000 // 30 seconds
+const CACHE_DURATION = 10000 // 10 seconds
 const MAX_RETRIES = 3
 const dataCache = new Map<string, { data: Record<string, StationData>, timestamp: number }>()
 
