@@ -1,7 +1,9 @@
 {
+  "version": 2,
+  "projectId": "prj_OoTvC3jRsVFJO7eD1yNdu4yYdJiF",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "installCommand": "npm install --force",
   "devCommand": "npm run dev",
-  "installCommand": "npm install",
   "framework": "vite"
 }
