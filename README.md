@@ -383,4 +383,4 @@ This project is open source and available under the [MIT License](LICENSE).
 - Hong Kong MTR Corporation for providing public transportation
 - DATA.GOV.HK for open data APIs
 - HKBUS.APP for design inspiration
-- https://github.com/sammyfung/mtrtrain for code & design 's reference
+- https://github.com/sammyfung/mtrtrain for code & design 's reference,API reference,data reuse.
