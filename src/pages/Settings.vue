@@ -1,11 +1,23 @@
 <template>
   <div class="settings-page">
-    <h1>設定</h1>
-    <div class="setting-group">
+    <h1>設定</h1>    <div class="setting-group">
       <label>
         <input type="checkbox" v-model="showBusEta" @change="saveSetting" />
         顯示巴士到站頁面（Bus ETA Page）
       </label>
+    </div>
+    
+    <!-- App Title Section -->
+    <div class="app-info">
+      <h2 class="app-title">HK Railway</h2>
+      <h3 class="app-subtitle">香港鐵路實時資訊</h3>
+      <p class="app-description">
+        Real-time MTR & Light Rail arrivals for Hong Kong<br>
+        香港港鐵及輕鐵實時到站時間查詢
+      </p>
+      <div class="app-version">
+        Version 2.0 | Built with ❤️ for Hong Kong
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +78,56 @@ watch(showBusEta, saveSetting);
   accent-color: var(--color-primary);
 }
 
+/* App Info Section */
+.app-info {
+  margin-top: 40px;
+  padding: 24px 16px;
+  text-align: center;
+  background: var(--color-surface);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.app-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 8px 0;
+  background: linear-gradient(135deg, var(--color-primary), #0066cc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 16px 0;
+  opacity: 0.9;
+}
+
+.app-description {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.app-version {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+  padding: 8px 16px;
+  background: var(--color-background);
+  border-radius: 8px;
+  display: inline-block;
+  border: 1px solid var(--color-border);
+}
+
 /* Dark mode support */
 [data-theme="dark"] .settings-page {
   background: var(--color-background);
@@ -80,5 +142,22 @@ watch(showBusEta, saveSetting);
 [data-theme="dark"] .setting-group:hover {
   background: var(--color-surface-variant);
   border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .app-info {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .app-title {
+  background: linear-gradient(135deg, var(--color-primary), #4dabf7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .app-version {
+  background: var(--color-background);
+  border-color: var(--color-border);
 }
 </style>

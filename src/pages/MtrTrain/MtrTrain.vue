@@ -75,12 +75,15 @@
             <span class="item-icon">🌙</span>
             <div class="item-content">
               <div class="item-title">深色模式</div>
-              <div class="item-status">{{ isDarkMode ? '已選擇' : '點擊切換' }}</div>
-            </div>
-          </div>
-        </div>
+              <div class="item-status">{{ isDarkMode ? '已選擇' : '點擊切換' }}</div>          </div>        </div>
+      </div>
+      
+      <!-- App Title Section - Outside Settings -->
+      <div class="app-title-section">
+        <div class="app-title-small">HK Railway</div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -544,6 +547,29 @@ onMounted(() => {
   transform: rotate(180deg);
 }
 
+/* App Title Section */
+.app-title-section {
+  margin: 8px 20px 16px 20px;
+  padding: 6px 12px;
+  text-align: center;
+  background: var(--color-surface, #fff);
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e9ecef);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.app-title-small {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #6c757d);
+}
+
+.app-subtitle-small {
+  font-size: 12px;
+  color: var(--color-text-secondary, #6c757d);
+  font-weight: 500;
+}
+
 .settings-panel {
   background: var(--color-surface, white);
   border: 2px solid #667eea;
@@ -839,6 +865,19 @@ onMounted(() => {
 
 [data-theme="dark"] .settings-item:hover {
   background: var(--color-surface-variant);
+}
+
+[data-theme="dark"] .app-title-section {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .app-title-small {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .app-subtitle-small {
+  color: var(--color-text-secondary);
 }
 
 [data-theme="dark"] .item-title {
