@@ -49,66 +49,49 @@
           </tbody>
         </table>
       </div>
-      
-      <!-- Mini Settings Button -->
+        <!-- Mini Settings Button -->
       <div class="mini-settings">
         <button 
           class="mini-settings-btn" 
           @click="toggleSettingsPanel"
           :class="{ expanded: showSettingsPanel }"
         >
-          <span class="settings-icon">⚙️</span>
-          <span class="settings-text">設定</span>
+          <span class="settings-icon">🎨</span>
+          <span class="settings-text">外觀</span>
           <span class="expand-icon">{{ showSettingsPanel ? '▲' : '▼' }}</span>
         </button>
         
         <!-- Expandable Settings Panel -->
         <div v-if="showSettingsPanel" class="settings-panel">
-          <div class="settings-item" @click="toggleAutoDbRenew">
-            <span class="item-icon">{{ autoRenew ? '🔁' : '⏸️' }}</span>
+          <div class="settings-item" @click="setTheme('light')">
+            <span class="item-icon">☀️</span>
             <div class="item-content">
-              <div class="item-title">自動更新路線資料</div>
-              <div class="item-status">{{ autoRenew ? '開啟' : '關閉' }}</div>
+              <div class="item-title">淺色模式</div>
+              <div class="item-status">{{ !isDarkMode ? '已選擇' : '點擊切換' }}</div>
             </div>
           </div>
           
-          <div class="settings-item" @click="toggleGeo">
-            <span class="item-icon">{{ geoPermission === 'granted' ? '📍' : '🚫' }}</span>
+          <div class="settings-item" @click="setTheme('dark')">
+            <span class="item-icon">🌙</span>
             <div class="item-content">
-              <div class="item-title">地理位置定位功能</div>
-              <div class="item-status">{{ geoPermission === 'granted' ? '開啟' : geoPermission === 'opening' ? '開啟中...' : '關閉' }}</div>
+              <div class="item-title">深色模式</div>
+              <div class="item-status">{{ isDarkMode ? '已選擇' : '點擊切換' }}</div>
             </div>
           </div>
-          
-          <div class="settings-item" @click="openPersonalizeDialog">
-            <span class="item-icon">😊</span>
-            <div class="item-content">
-              <div class="item-title">個性化設定</div>
-              <div class="item-status">震動、資料管理等</div>
-            </div>
-          </div>
-          
-          <div v-if="showGeoPermissionDenied" class="settings-snackbar">無法獲得地理位置定位功能權限</div>
-          <div v-if="updating" class="settings-snackbar">資料更新中...</div>
         </div>
       </div>
-
-      
-      <!-- Personalize Dialog -->
-      <PersonalizeDialog :open="showPersonalizeDialog" @close="showPersonalizeDialog = false" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue';
-import PersonalizeDialog from '../../components/settings/PersonalizeDialog.vue';
 import { useTheme } from '../../composables/useTheme';
 import { MTR_LINES } from '../../constants/mtrLines';
 import type { Direction, Language, LineConfig, MtrLineCode, StationConfig, StationData, TrainArrival } from '../../types/train';
 
 // Initialize theme system
-useTheme();
+const { isDarkMode, setThemeMode } = useTheme();
 
 const lang = ref<Language>('zh'); // TODO: Replace with actual language logic
 const selectedLine = ref<MtrLineCode>('TML');
@@ -189,34 +172,15 @@ const fetchTrainData = async () => {
   }
 };
 
-// Settings logic
-const autoRenew = ref(true);
-const geoPermission = ref('closed');
-const updating = ref(false);
-const showGeoPermissionDenied = ref(false);
-const showPersonalizeDialog = ref(false);
+// Settings logic - only theme switching
 const showSettingsPanel = ref(false);
-
-function toggleAutoDbRenew() {
-  autoRenew.value = !autoRenew.value;
-}
 
 function toggleSettingsPanel() {
   showSettingsPanel.value = !showSettingsPanel.value;
 }
 
-function toggleGeo() {
-  if (geoPermission.value === 'granted') {
-    geoPermission.value = 'closed';
-  } else {
-    geoPermission.value = 'opening';
-    setTimeout(() => {
-      geoPermission.value = 'granted';
-    }, 1000);
-  }
-}
-function openPersonalizeDialog() {
-  showPersonalizeDialog.value = true;
+function setTheme(mode: 'light' | 'dark') {
+  setThemeMode(mode);
 }
 
 const getTerminusNames = computed(() => {

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useTheme } from './composables/useTheme'
 import LightRail from './pages/LightRail/LightRail.vue'
 import MtrTrain from './pages/MtrTrain/MtrTrain.vue'
@@ -16,6 +16,71 @@ import MtrTrain from './pages/MtrTrain/MtrTrain.vue'
 useTheme()
 
 const currentPage = ref('mtr')
+
+// SEO Meta Tag Management
+const updateMetaTags = (page: string) => {
+  const metaData = {
+    mtr: {
+      title: 'Hong Kong MTR Real-time Train Arrivals | HK Railway',
+      description: 'Live MTR train arrival times for all Hong Kong lines. Real-time updates every 10 seconds with Google Maps integration for complete journey planning.',
+      keywords: 'Hong Kong MTR, real-time train arrival, MTR schedule, Hong Kong transport, MTR app, train times Hong Kong'
+    },
+    lrt: {
+      title: 'Hong Kong Light Rail (LRT) Live Schedule | HK Railway',
+      description: 'Real-time Light Rail arrival information for Tuen Mun and Yuen Long. Complete LRT network coverage with live platform updates and Google Maps routing.',
+      keywords: 'Hong Kong Light Rail, LRT schedule, Tuen Mun LRT, Yuen Long transport, Light Rail times, New Territories transit'
+    }
+  }
+
+  const data = metaData[page as keyof typeof metaData] || metaData.mtr
+
+  // Update document title
+  document.title = data.title
+
+  // Update meta description
+  const metaDescription = document.querySelector('meta[name="description"]')
+  if (metaDescription) {
+    metaDescription.setAttribute('content', data.description)
+  }
+
+  // Update meta keywords
+  const metaKeywords = document.querySelector('meta[name="keywords"]')
+  if (metaKeywords) {
+    metaKeywords.setAttribute('content', data.keywords)
+  }
+
+  // Update Open Graph title
+  const ogTitle = document.querySelector('meta[property="og:title"]')
+  if (ogTitle) {
+    ogTitle.setAttribute('content', data.title)
+  }
+
+  // Update Open Graph description
+  const ogDescription = document.querySelector('meta[property="og:description"]')
+  if (ogDescription) {
+    ogDescription.setAttribute('content', data.description)
+  }
+
+  // Update Twitter title
+  const twitterTitle = document.querySelector('meta[property="twitter:title"]')
+  if (twitterTitle) {
+    twitterTitle.setAttribute('content', data.title)
+  }
+
+  // Update Twitter description
+  const twitterDescription = document.querySelector('meta[property="twitter:description"]')
+  if (twitterDescription) {
+    twitterDescription.setAttribute('content', data.description)
+  }
+
+  // Update canonical URL
+  const canonical = document.querySelector('link[rel="canonical"]')
+  if (canonical) {
+    const baseUrl = 'https://hk-mtr-lrt-vue-mx6hh11lt-hugos-projects-9d8ef24c.vercel.app'
+    const pageUrl = page === 'lrt' ? `${baseUrl}/#/light-rail` : baseUrl
+    canonical.setAttribute('href', pageUrl)
+  }
+}
 
 // Simple routing based on hash
 const handleHashChange = () => {
@@ -54,6 +119,11 @@ onBeforeUnmount(() => {
   window.removeEventListener('hashchange', handleHashChange)
   window.removeEventListener('navigate-to-lrt', handleNavigateToLrt)
   window.removeEventListener('navigate-to-mtr', handleNavigateToMtr)
+})
+
+// Watch for page changes and update meta tags
+watch(currentPage, (newPage) => {
+  updateMetaTags(newPage)
 })
 </script>
 

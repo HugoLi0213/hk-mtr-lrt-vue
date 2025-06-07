@@ -1,0 +1,199 @@
+// Google Analytics 4 Integration for HK Railway
+// Add this to index.html before closing </head> tag
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  // Configure for Hong Kong market
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    // Hong Kong specific settings
+    'country': 'HK',
+    'language': 'en-HK',
+    'currency': 'HKD',
+    'custom_map': {
+      'custom_parameter_1': 'mtr_line',
+      'custom_parameter_2': 'station_name',
+      'custom_parameter_3': 'journey_type'
+    }
+  });
+
+  // Track MTR line usage
+  window.trackMTRLine = function(lineCode, stationName) {
+    gtag('event', 'mtr_line_view', {
+      'mtr_line': lineCode,
+      'station_name': stationName,
+      'event_category': 'MTR Usage',
+      'event_label': `${lineCode} - ${stationName}`
+    });
+  };
+
+  // Track LRT usage
+  window.trackLRTStation = function(stationId, stationName) {
+    gtag('event', 'lrt_station_view', {
+      'station_id': stationId,
+      'station_name': stationName,
+      'event_category': 'LRT Usage',
+      'event_label': `LRT ${stationId} - ${stationName}`
+    });
+  };
+
+  // Track Google Maps integration usage
+  window.trackMapIntegration = function(action, location) {
+    gtag('event', 'map_integration', {
+      'action': action, // 'directions_requested', 'location_shared', etc.
+      'location': location,
+      'event_category': 'Maps Integration',
+      'event_label': `${action} - ${location}`
+    });
+  };
+
+  // Track performance metrics
+  window.trackPerformance = function(metricName, value) {
+    gtag('event', 'performance_metric', {
+      'metric_name': metricName,
+      'metric_value': value,
+      'event_category': 'Performance',
+      'value': value
+    });
+  };
+
+  // Track offline usage
+  window.trackOfflineUsage = function(isOffline) {
+    gtag('event', 'offline_usage', {
+      'offline_status': isOffline,
+      'event_category': 'Connectivity',
+      'event_label': isOffline ? 'Offline Mode' : 'Online Mode'
+    });
+  };
+
+  // Track bookmark usage
+  window.trackBookmark = function(action, stationType, stationName) {
+    gtag('event', 'bookmark_action', {
+      'action': action, // 'add', 'remove', 'use'
+      'station_type': stationType, // 'MTR', 'LRT'
+      'station_name': stationName,
+      'event_category': 'Bookmarks',
+      'event_label': `${action} - ${stationType} - ${stationName}`
+    });
+  };
+
+  // Track user journey patterns
+  window.trackUserJourney = function(fromStation, toStation, travelTime) {
+    gtag('event', 'user_journey', {
+      'origin': fromStation,
+      'destination': toStation,
+      'travel_time': travelTime,
+      'event_category': 'Journey Planning',
+      'event_label': `${fromStation} to ${toStation}`,
+      'value': travelTime
+    });
+  };
+
+  // Track API response times
+  window.trackAPIPerformance = function(endpoint, responseTime, success) {
+    gtag('event', 'api_performance', {
+      'endpoint': endpoint,
+      'response_time': responseTime,
+      'success': success,
+      'event_category': 'API Performance',
+      'event_label': endpoint,
+      'value': responseTime
+    });
+  };
+</script>
+
+<!-- Microsoft Clarity (Alternative/Additional Analytics) -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+  
+  // Track Hong Kong specific user interactions
+  clarity("set", "market", "Hong Kong");
+  clarity("set", "app_type", "transit_app");
+</script>
+
+<!-- Performance Monitoring -->
+<script>
+  // Core Web Vitals tracking
+  function trackWebVitals() {
+    // Track Largest Contentful Paint (LCP)
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (entry.entryType === 'largest-contentful-paint') {
+          gtag('event', 'web_vitals', {
+            'metric_name': 'LCP',
+            'metric_value': Math.round(entry.startTime),
+            'event_category': 'Web Vitals'
+          });
+        }
+      }
+    }).observe({type: 'largest-contentful-paint', buffered: true});
+
+    // Track First Input Delay (FID)
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (entry.entryType === 'first-input') {
+          gtag('event', 'web_vitals', {
+            'metric_name': 'FID',
+            'metric_value': Math.round(entry.processingStart - entry.startTime),
+            'event_category': 'Web Vitals'
+          });
+        }
+      }
+    }).observe({type: 'first-input', buffered: true});
+
+    // Track Cumulative Layout Shift (CLS)
+    let clsValue = 0;
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (!entry.hadRecentInput) {
+          clsValue += entry.value;
+        }
+      }
+      gtag('event', 'web_vitals', {
+        'metric_name': 'CLS',
+        'metric_value': Math.round(clsValue * 1000) / 1000,
+        'event_category': 'Web Vitals'
+      });
+    }).observe({type: 'layout-shift', buffered: true});
+  }
+
+  // Initialize tracking when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', trackWebVitals);
+  } else {
+    trackWebVitals();
+  }
+
+  // Track page load performance
+  window.addEventListener('load', function() {
+    const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+    gtag('event', 'page_load_time', {
+      'load_time': loadTime,
+      'event_category': 'Performance',
+      'value': loadTime
+    });
+  });
+
+  // Track network connectivity changes (important for Hong Kong mobile users)
+  window.addEventListener('online', function() {
+    gtag('event', 'connectivity_change', {
+      'status': 'online',
+      'event_category': 'Connectivity'
+    });
+  });
+
+  window.addEventListener('offline', function() {
+    gtag('event', 'connectivity_change', {
+      'status': 'offline', 
+      'event_category': 'Connectivity'
+    });
+  });
+</script>

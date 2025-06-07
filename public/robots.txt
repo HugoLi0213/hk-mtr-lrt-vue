@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap (港鐵時刻表網站地圖)
+Sitemap: https://hk-mtr-lrt-vue-mx6hh11lt-hugos-projects-9d8ef24c.vercel.app/sitemap.xml
+
+# Crawl-delay for respectful crawling (尊重爬蟲延遲)
+Crawl-delay: 1
+
+# Allow all content for SEO (允許所有搜尋引擎優化內容)
+Allow: /mtr
+Allow: /light-rail
+Allow: /settings
+Allow: /en/
+Allow: /zh/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+Allow: /*.ico
+
+# Allow language specific paths (允許語言特定路徑)
+Allow: /en/mtr
+Allow: /en/light-rail
+Allow: /zh/mtr
+Allow: /zh/light-rail
+
+# Disallow admin or sensitive areas (none in this case)
+# 禁止管理或敏感區域（本案例中沒有）
+# Disallow: /admin/

@@ -1,0 +1,60 @@
+{
+  "name": "港鐵時刻表 HK Railway - 港鐵輕鐵實時資訊 Real-time MTR & Light Rail Information",
+  "short_name": "港鐵時刻表",
+  "description": "香港港鐵及輕鐵實時到站資訊，配合Google Maps整合，完美的交通規劃解決方案。Real-time Hong Kong MTR and Light Rail train arrivals with Google Maps integration for seamless transit planning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007ACC",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "zh-HK",
+  "categories": ["travel", "navigation", "transportation"],
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "MTR Lines",
+      "short_name": "MTR",
+      "description": "View real-time MTR train arrivals",
+      "url": "/#/mtr",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Light Rail",
+      "short_name": "LRT",
+      "description": "Check Light Rail schedules",
+      "url": "/#/light-rail",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

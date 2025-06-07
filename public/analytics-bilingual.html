@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>港鐵時刻表分析 HK Railway Analytics - 使用統計 Usage Statistics</title>
+    <meta name="description" content="港鐵時刻表網站使用統計和分析數據。HK Railway website usage statistics and analytics data.">
+    
+    <!-- Google Analytics 4 for Bilingual Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        // Enhanced tracking with language and region
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            'custom_map': {
+                'custom_dimension_1': 'language_preference',
+                'custom_dimension_2': 'mtr_line_usage',
+                'custom_dimension_3': 'user_location_hk'
+            },
+            'send_page_view': true,
+            'anonymize_ip': true,
+            'country': 'HK',
+            'language': 'zh-HK',
+            'currency': 'HKD'
+        });
+        
+        // Track bilingual usage patterns
+        function trackLanguageUsage(language) {
+            gtag('event', 'language_switch', {
+                'event_category': 'User Interaction',
+                'event_label': language,
+                'custom_dimension_1': language
+            });
+        }
+        
+        // Track MTR line popularity with Chinese names
+        function trackMTRLineUsage(line, chineseName) {
+            gtag('event', 'mtr_line_selection', {
+                'event_category': 'Transit Usage',
+                'event_label': `${line} ${chineseName}`,
+                'custom_dimension_2': line
+            });
+        }
+        
+        // Track tourist vs local usage patterns
+        function trackUserType(userType) {
+            gtag('event', 'user_type_detection', {
+                'event_category': 'Demographics',
+                'event_label': userType, // 'tourist', 'local', 'expat'
+                'custom_dimension_3': userType
+            });
+        }
+    </script>
+    
+    <!-- Microsoft Clarity for User Behavior -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+        
+        // Custom tracking for bilingual interactions
+        clarity("set", "language", navigator.language || "zh-HK");
+        clarity("set", "market", "Hong Kong");
+        clarity("set", "app_type", "transit_bilingual");
+    </script>
+</head>
+<body>
+    <header>
+        <h1>港鐵時刻表分析 📊<br>HK Railway Analytics</h1>
+        <p class="subtitle">雙語網站使用統計 | Bilingual Website Usage Statistics</p>
+    </header>
+    
+    <main class="analytics-container">
+        <section class="chinese-content">
+            <h2>🇭🇰 網站使用統計</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>語言偏好 Language Preference</h3>
+                    <ul>
+                        <li>繁體中文使用率 Traditional Chinese Usage</li>
+                        <li>英文介面使用率 English Interface Usage</li>
+                        <li>混合語言搜尋 Mixed Language Searches</li>
+                    </ul>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>港鐵線路查詢 MTR Line Queries</h3>
+                    <ul>
+                        <li>熱門路線統計 Popular Line Statistics</li>
+                        <li>繁忙時段分析 Peak Time Analysis</li>
+                        <li>車站查詢頻率 Station Query Frequency</li>
+                    </ul>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>用戶類型分析 User Type Analysis</h3>
+                    <ul>
+                        <li>本地居民 Local Residents</li>
+                        <li>遊客 Tourists</li>
+                        <li>外籍人士 Expats</li>
+                        <li>商務旅客 Business Travelers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="english-content">
+            <h2>🌐 Website Analytics Features</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Regional Usage Patterns</h3>
+                    <ul>
+                        <li>Hong Kong Island vs Kowloon vs New Territories</li>
+                        <li>Tourist areas (Central, TST, Causeway Bay)</li>
+                        <li>Residential areas usage patterns</li>
+                        <li>Airport Express usage tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Feature Adoption</h3>
+                    <ul>
+                        <li>Dark/Light mode preference</li>
+                        <li>Offline functionality usage</li>
+                        <li>Google Maps integration clicks</li>
+                        <li>Bookmark/Favorites usage</li>
+                    </ul>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Performance Metrics</h3>
+                    <ul>
+                        <li>Page load times across Hong Kong networks</li>
+                        <li>API response times from DATA.GOV.HK</li>
+                        <li>Mobile vs Desktop usage</li>
+                        <li>Progressive Web App installation rates</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="privacy-section">
+            <h3>🔒 私隱保護 Privacy Protection</h3>
+            <div class="privacy-content">
+                <div class="chinese-privacy">
+                    <h4>中文私隱聲明</h4>
+                    <p>我們嚴格保護用戶私隱，所有分析數據均以匿名方式收集：</p>
+                    <ul>
+                        <li>不收集任何個人身份資訊</li>
+                        <li>不追蹤個人位置資料</li>
+                        <li>數據僅用於改善服務質量</li>
+                        <li>符合香港個人資料保護條例</li>
+                    </ul>
+                </div>
+                
+                <div class="english-privacy">
+                    <h4>English Privacy Statement</h4>
+                    <p>We strictly protect user privacy with anonymous data collection:</p>
+                    <ul>
+                        <li>No personal identification information collected</li>
+                        <li>No personal location tracking</li>
+                        <li>Data used solely for service improvement</li>
+                        <li>Compliant with Hong Kong privacy regulations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="technical-details">
+            <h3>⚙️ 技術詳情 Technical Details</h3>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>追蹤工具 Tracking Tools</h4>
+                    <ul>
+                        <li>Google Analytics 4 (GA4)</li>
+                        <li>Microsoft Clarity</li>
+                        <li>Core Web Vitals</li>
+                        <li>Custom Performance Metrics</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h4>數據類型 Data Types</h4>
+                    <ul>
+                        <li>頁面瀏覽量 Page Views</li>
+                        <li>用戶互動 User Interactions</li>
+                        <li>性能指標 Performance Metrics</li>
+                        <li>錯誤追蹤 Error Tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 港鐵時刻表 HK Railway | 為香港人設計的港鐵查詢工具 | MTR Timetable Tool Designed for Hong Kong</p>
+    </footer>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .analytics-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+        
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #1a73e8;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #5f6368;
+        }
+        
+        h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #1a73e8;
+        }
+        
+        .stats-grid, .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card, .tech-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.2s ease;
+        }
+        
+        .stat-card:hover, .tech-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .privacy-section {
+            background: #e8f5e8;
+            margin: 0 -20px;
+            padding: 40px 20px;
+        }
+        
+        .privacy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .chinese-privacy, .english-privacy {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #34a853;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #5f6368;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #1a73e8;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .privacy-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stats-grid, .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .analytics-container {
+                margin: 0;
+                border-radius: 0;
+                padding: 0 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .stat-card, .tech-card {
+                background: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            .chinese-privacy, .english-privacy {
+                background: #2d2d2d;
+                color: #e0e0e0;
+            }
+        }
+    </style>
+</body>
+</html>
