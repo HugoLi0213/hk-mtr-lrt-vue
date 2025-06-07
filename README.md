@@ -380,7 +380,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-- Hong Kong MTR Corporation for providing public transportation
+- Hong Kong MTR Corporation for providing public transportation,also data display like:https://www.mtr.com.hk/ch/customer/services/timetable_detail_weekday.html for UI 's reference
 - DATA.GOV.HK for open data APIs
 - HKBUS.APP for design inspiration
 - https://github.com/sammyfung/mtrtrain for code & design 's reference,API reference,data reuse.
