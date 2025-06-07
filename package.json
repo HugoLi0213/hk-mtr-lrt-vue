@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build-check": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "build-check": "npx vue-tsc && npx vite build",
+    "preview": "npx vite preview"
   },
   "dependencies": {
     "vue": "^3.4.0"
