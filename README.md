@@ -37,8 +37,17 @@ src/
 │   └── mtrLines.ts                  # MTR line configurations
 ├── types/
 │   └── train.ts                     # TypeScript type definitions
+├── composables/                     # Vue 3 composables for shared logic
+├── utils/                           # Utility functions
 └── App.vue                          # Main app component
 ```
+
+## Development Notes
+
+- **Clean Architecture**: Removed all legacy React components and unnecessary files
+- **Mobile-First Design**: Container max-width of 480px, centered layout like HKBUS.APP
+- **Simplified Settings**: Converted complex React settings to simple button-based interface
+- **TypeScript Support**: Full type safety with proper interfaces and type definitions
 
 ## Installation
 
