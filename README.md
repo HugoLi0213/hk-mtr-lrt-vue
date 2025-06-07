@@ -27,8 +27,7 @@ src/
 ├── components/
 │   └── settings/
 │       ├── PersonalizeDialog.vue    # Settings modal dialog
-│       ├── OptionsList.vue          # Simplified settings buttons
-│       └── UserContentManagement.vue # Bookmark management
+│       └── OptionsList.vue          # Simplified settings buttons
 ├── pages/
 │   ├── Home/                        # Home page
 │   ├── MtrTrain/                    # Main MTR page with real-time data

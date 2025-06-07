@@ -2,25 +2,17 @@
   <div v-if="open" class="dialog-overlay" @click="handleClose">
     <div class="dialog" @click.stop>
       <div class="dialog-header">
-        <div class="header-content">
-          <button v-if="tab !== 'options'" class="back-btn" @click="tab = 'options'">
-            ←
-          </button>
-          <h2>{{ getTitle }}</h2>
-        </div>
+        <h2>個性化設定</h2>
         <button class="close-btn" @click="handleClose">✕</button>
       </div>
       <div class="divider"></div>
-      <OptionsList v-if="tab === 'options'" @go-to-manage="tab = 'manage'" />
-      <UserContentManagement v-if="tab === 'manage'" />
+      <OptionsList />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
 import OptionsList from './OptionsList.vue';
-import UserContentManagement from './UserContentManagement.vue';
 
 interface Props {
   open: boolean;
@@ -33,17 +25,8 @@ interface Emits {
 defineProps<Props>();
 const emit = defineEmits<Emits>();
 
-const tab = ref<'options' | 'manage'>('options');
-
-const getTitle = computed(() => {
-  if (tab.value === 'options') return '個性化設定';
-  if (tab.value === 'manage') return '管理收藏';
-  return '';
-});
-
 const handleClose = () => {
   emit('close');
-  tab.value = 'options';
 };
 </script>
 
@@ -63,7 +46,7 @@ const handleClose = () => {
 }
 
 .dialog {
-  background: white;
+  background: var(--color-surface, white);
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
@@ -72,6 +55,7 @@ const handleClose = () => {
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 }
 
 .dialog-header {
@@ -79,22 +63,18 @@ const handleClose = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8f9fa;
+  background: var(--color-tableHeader, #f8f9fa);
+  transition: background-color 0.3s ease;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.header-content h2 {
+.dialog-header h2 {
   margin: 0;
   font-size: 1.2em;
   font-weight: bold;
+  color: var(--color-text, #000);
 }
 
-.back-btn, .close-btn {
+.close-btn {
   background: none;
   border: none;
   font-size: 1.2em;
@@ -102,9 +82,10 @@ const handleClose = () => {
   padding: 4px 8px;
   border-radius: 4px;
   transition: background 0.2s;
+  color: var(--color-text, #000);
 }
 
-.back-btn:hover, .close-btn:hover {
+.close-btn:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 

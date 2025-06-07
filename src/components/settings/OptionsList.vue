@@ -1,14 +1,27 @@
 <template>
   <div class="options-list">
-    <button class="setting-btn" @click="$emit('go-to-manage')">
-      <span class="btn-icon">📋</span>
-      <span class="btn-text">管理收藏</span>
-    </button>
+    <!-- Theme Toggle -->
+    <div class="theme-section">
+      <h3 class="section-title">外觀</h3>
+      <div class="theme-toggle-container">
+        <div class="theme-selector">
+          <button 
+            v-for="mode in themeOptions" 
+            :key="mode.value"
+            :class="['theme-btn', { active: themeMode === mode.value }]"
+            @click="setThemeMode(mode.value)"
+          >
+            <span class="theme-icon">{{ mode.icon }}</span>
+            <span class="theme-label">{{ mode.label }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
     
-    <button class="setting-btn" @click="toggleDarkMode">
-      <span class="btn-icon">{{ isDarkMode ? '🌙' : '☀️' }}</span>
-      <span class="btn-text">{{ isDarkMode ? '深色模式' : '淺色模式' }}</span>
-    </button>
+    <div class="divider"></div>
+    
+    <!-- Settings -->
+    <h3 class="section-title">功能設定</h3>
     
     <button class="setting-btn" @click="toggleAutoRefresh">
       <span class="btn-icon">{{ autoRefresh ? '🔄' : '⏸️' }}</span>
@@ -33,28 +46,22 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import type { ThemeMode } from '../../composables/useTheme';
+import { useTheme } from '../../composables/useTheme';
 
-interface Emits {
-  (e: 'go-to-manage'): void;
-}
+// Theme management
+const { themeMode, setThemeMode } = useTheme();
 
-defineEmits<Emits>();
+// Theme options
+const themeOptions = [
+  { value: 'light' as ThemeMode, icon: '☀️', label: '淺色' },
+  { value: 'dark' as ThemeMode, icon: '🌙', label: '深色' },
+  { value: 'system' as ThemeMode, icon: '⚙️', label: '跟隨系統' }
+];
 
-// Simplified settings state
-const isDarkMode = ref(false);
+// Settings state
 const autoRefresh = ref(true);
 const vibrationEnabled = ref(true);
-
-// Action functions
-const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value;
-  // Apply dark mode to document
-  if (isDarkMode.value) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-};
 
 const toggleAutoRefresh = () => {
   autoRefresh.value = !autoRefresh.value;
@@ -80,12 +87,99 @@ const clearData = () => {
   padding: 8px;
 }
 
+.section-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #495057;
+  margin: 0 0 12px 0;
+  padding: 0 4px;
+}
+
+.theme-section {
+  margin-bottom: 20px;
+}
+
+.theme-toggle-container {
+  padding: 4px;
+}
+
+.theme-selector {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.theme-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface, white);
+  border: 2px solid var(--color-cardBorder, #e0e0e0);
+  border-radius: 12px;
+  padding: 16px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-text, #000);
+}
+
+.theme-btn:hover {
+  background: var(--color-tableHeader, #f8f9fa);
+  border-color: var(--color-primary, #1a73e8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+.theme-btn.active {
+  background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+  border-color: #1a73e8;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
+}
+
+.theme-btn.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.theme-icon {
+  font-size: 1.8em;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.theme-label {
+  font-weight: 500;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+.theme-btn.active .theme-label {
+  font-weight: 600;
+}
+
 .setting-btn {
   width: 100%;
   display: flex;
   align-items: center;
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--color-surface, white);
+  border: 1px solid var(--color-cardBorder, #e0e0e0);
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 12px;
@@ -93,10 +187,11 @@ const clearData = () => {
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--color-text, #000);
 }
 
 .setting-btn:hover {
-  background: #f8f9fa;
+  background: var(--color-tableHeader, #f8f9fa);
   transform: translateY(-1px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
@@ -130,15 +225,42 @@ const clearData = () => {
 
 .btn-status {
   font-size: 0.9em;
-  color: #666;
-  background: #f0f0f0;
+  color: var(--color-textSecondary, #666);
+  background: var(--color-tableHeader, #f0f0f0);
   padding: 4px 8px;
   border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .divider {
   height: 1px;
-  background: #e0e0e0;
+  background: var(--color-border, #e0e0e0);
   margin: 16px 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .theme-selector {
+    gap: 6px;
+  }
+  
+  .theme-btn {
+    padding: 12px 8px;
+    font-size: 0.85em;
+  }
+  
+  .theme-icon {
+    font-size: 1.5em;
+  }
+  
+  .theme-label {
+    font-size: 0.85em;
+  }
+  
+  .setting-btn {
+    padding: 12px;
+    font-size: 0.95em;
+  }
 }
 </style>

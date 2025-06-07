@@ -14,23 +14,51 @@ const isDarkMode = computed(() => {
   return themeMode.value === 'dark'
 })
 
-// Theme colors based on hkbus.app design
+// Theme colors optimized for MTR app
 const theme = computed(() => ({
   mode: isDarkMode.value ? 'dark' : 'light',
   colors: {
-    primary: isDarkMode.value ? '#fedb00' : '#444',
-    background: isDarkMode.value ? '#000' : '#fedb00',
-    surface: isDarkMode.value ? '#1a1a1a' : '#fff',
-    text: isDarkMode.value ? '#fedb00' : '#000',
-    textSecondary: isDarkMode.value ? '#ccc' : '#666',
-    border: isDarkMode.value ? '#333' : '#ddd',
-    cardBorder: isDarkMode.value ? '#444' : '#e0e0e0',
-    tableHeader: isDarkMode.value ? '#2a2a2a' : '#f0f0f0',
-    stationName: isDarkMode.value ? '#333' : '#e0e0e0',
-    success: '#32b8c6',
-    error: '#ff5459',
-    warning: '#e68161',
-    info: '#a7a9a9'
+    // Primary colors
+    primary: isDarkMode.value ? '#7c92f7' : '#667eea',
+    'primary-container': isDarkMode.value ? '#2d3748' : '#e6f3ff',
+    'on-primary': isDarkMode.value ? '#ffffff' : '#ffffff',
+    
+    // Background colors
+    background: isDarkMode.value ? '#0f0f0f' : '#f5f5f7',
+    surface: isDarkMode.value ? '#1a1a1a' : '#ffffff',
+    'surface-variant': isDarkMode.value ? '#2d2d2d' : '#f5f5f7',
+    'surface-container': isDarkMode.value ? '#262626' : '#fafafa',
+    
+    // Text colors
+    text: isDarkMode.value ? '#e4e4e7' : '#18181b',
+    'text-secondary': isDarkMode.value ? '#a1a1aa' : '#71717a',
+    'text-tertiary': isDarkMode.value ? '#71717a' : '#a1a1aa',
+    'on-surface': isDarkMode.value ? '#e4e4e7' : '#18181b',
+    
+    // Border colors
+    border: isDarkMode.value ? '#404040' : '#e4e4e7',
+    'border-light': isDarkMode.value ? '#525252' : '#d4d4d8',
+    'card-border': isDarkMode.value ? '#525252' : '#e4e4e7',
+    
+    // Component specific colors
+    'table-header': isDarkMode.value ? '#262626' : '#f8f9fa',
+    'station-name': isDarkMode.value ? '#404040' : '#e4e4e7',
+    
+    // Status colors
+    success: isDarkMode.value ? '#34d399' : '#22c55e',
+    error: isDarkMode.value ? '#f87171' : '#ef4444',
+    warning: isDarkMode.value ? '#fbbf24' : '#f59e0b',
+    info: isDarkMode.value ? '#60a5fa' : '#3b82f6',
+    
+    // Light Rail specific colors
+    'route-badge-bg': isDarkMode.value ? '#374151' : '#f3f4f6',
+    'platform-tab': isDarkMode.value ? '#1f2937' : '#ffffff',
+    'overlay-bg': isDarkMode.value ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.6)',
+    
+    // Interactive states
+    hover: isDarkMode.value ? '#374151' : '#f3f4f6',
+    pressed: isDarkMode.value ? '#4b5563' : '#e5e7eb',
+    focus: isDarkMode.value ? '#6366f1' : '#667eea'
   },
   fontSize: fontSize.value
 }))
@@ -91,9 +119,9 @@ function applyTheme() {
   })
   
   root.style.setProperty('--font-size-base', `${currentTheme.fontSize}px`)
-  root.style.setProperty('--font-size-table', `${Math.max(currentTheme.fontSize * 2, 32)}px`)
-  root.style.setProperty('--font-size-title', `${Math.max(currentTheme.fontSize * 3, 48)}px`)
-  root.style.setProperty('--font-size-eta-dest', `${Math.max(currentTheme.fontSize * 1.5, 24)}px`)
+  root.style.setProperty('--font-size-table', `${Math.min(currentTheme.fontSize * 1.2, 20)}px`)
+  root.style.setProperty('--font-size-title', `${Math.min(currentTheme.fontSize * 1.8, 28)}px`)
+  root.style.setProperty('--font-size-eta-dest', `${Math.min(currentTheme.fontSize * 1.1, 18)}px`)
 }
 
 // Watch for theme changes
