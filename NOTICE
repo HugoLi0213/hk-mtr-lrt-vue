@@ -1,0 +1,71 @@
+# Acknowledgments and Attribution
+
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+
+## Copyright
+
+Copyright 2025 Hugo
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+## Third-Party References and Acknowledgments
+
+### MTR Train Reference Project
+
+This project references code, design patterns, API implementations, and data structures from the following repository:
+
+**Repository:** https://github.com/sammyfung/mtrtrain  
+**Author:** Sammy Fung (sammyfung)  
+**License:** Please refer to the original repository for licensing information  
+
+#### Areas of Reference:
+
+1. **Code Reference:** 
+   - Implementation patterns for MTR train data handling
+   - API integration approaches
+   - Component structure and organization
+
+2. **Design Reference:**
+   - User interface design patterns
+   - User experience flows
+   - Visual design elements and layouts
+
+3. **API Reference:**
+   - MTR API integration methods
+   - Data fetching strategies
+   - Error handling patterns
+
+4. **Data Reuse:**
+   - MTR line data structures
+   - Station information formatting
+   - Train schedule data models
+
+### Compliance with Apache License 2.0
+
+This acknowledgment file is created to ensure compliance with the Apache License 2.0 requirements, specifically:
+
+- **Attribution:** Proper credit is given to the original mtrtrain project and its author
+- **Notice:** This file serves as the required NOTICE file as referenced in Section 4(d) of the Apache License 2.0
+- **Transparency:** Clear documentation of what has been referenced or derived from the original work
+
+### Original Work Disclaimer
+
+While this project references the mtrtrain repository for inspiration and guidance, this project constitutes an independent implementation. Any direct code usage, if present, is properly attributed above.
+
+### Contact
+
+For any questions regarding the use of referenced materials or licensing concerns, please refer to the original repository or contact the maintainers through the appropriate channels.
+
+---
+
+*This file was created to ensure proper attribution and compliance with open source licensing requirements.*
