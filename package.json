@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install && vite build",
+    "build": "vite build",
     "build-check": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "postinstall": "npm install @rollup/rollup-linux-x64-gnu --ignore-engines --force || true"
+    "preview": "vite preview"
   },
   "dependencies": {
     "vue": "^3.4.0"
