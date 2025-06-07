@@ -8,3 +8,4 @@ pages/
 .vue-global-types/
 *.log
 .DS_Store
+.vercel
