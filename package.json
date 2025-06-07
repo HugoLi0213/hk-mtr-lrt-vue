@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "vercel-build": "vite build",
     "build-check": "vue-tsc && vite build",
     "preview": "vite preview"
   },
