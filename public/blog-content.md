@@ -1,10 +1,10 @@
-# Use Google Maps for Navigation, HK Railway for Traditional Timetable View
+# Use Google Maps for Navigation, HKMTRVUE for Traditional Timetable View
 
 ## The Perfect Two-App Solution for Hong Kong Transit
 
-**Simple Rule: Google Maps for getting around → HK Railway for traditional train schedules & real-time arrivals**
+**Simple Rule: Google Maps for getting around → HKMTRVUE for traditional train schedules & real-time arrivals**
 
-Hong Kong has one of the world's most complex transit systems. Google Maps is excellent for navigation and route planning, but when you need MTR and LRT schedules and real-time arrival information in a clear, traditional timetable view, you need a specialized frontend web app like HK Railway - no GPS or location services required.
+Hong Kong has one of the world's most complex transit systems. Google Maps is excellent for navigation and route planning, but when you need MTR and LRT schedules and real-time arrival information in a clear, traditional timetable view, you need a specialized frontend web app like HKMTRVUE - no GPS or location services required.
 
 ## Clear Division of Responsibilities
 
@@ -15,7 +15,7 @@ Hong Kong has one of the world's most complex transit systems. Google Maps is ex
 ✅ Integration with hotels, restaurants, and attractions  
 ✅ Final walking directions from your destination station
 
-### **Use HK Railway For:**
+### **Use HKMTRVUE For:**
 ✅ Real-time MTR and LRT schedules & arrival times in traditional timetable view (updated every 10 seconds)  
 ✅ Platform and direction information  
 ✅ Current service status and delays  
@@ -23,7 +23,7 @@ Hong Kong has one of the world's most complex transit systems. Google Maps is ex
 ✅ Manual station selection (no GPS or location services required)
 ✅ Frontend web app - works in any browser without installation  
 
-## The Perfect Solution: Google Maps + HK Railway
+## The Perfect Solution: Google Maps + HKMTRVUE
 
 ## The Two-App Workflow
 
@@ -33,8 +33,8 @@ Hong Kong has one of the world's most complex transit systems. Google Maps is ex
 - Follow walking/driving directions to the MTR/LRT station
 - Note which train line and direction you need to take
 
-### **🚇 Step 2: Check Train Schedules & Real-time Arrivals with HK Railway**
-- Open HK Railway web app (works in any browser - no download needed, frontend only)
+### **🚇 Step 2: Check Train Schedules & Real-time Arrivals with HKMTRVUE**
+- Open HKMTRVUE web app (works in any browser - no download needed, frontend only)
 - Manually select your departure station and line (no GPS or location services required)
 - See schedules & real-time arrival times in traditional timetable view updated every 10 seconds from official DATA.GOV.HK
 - Check platform information and train destinations in familiar timetable format
@@ -52,7 +52,7 @@ Hong Kong has one of the world's most complex transit systems. Google Maps is ex
 
 ### **Why Traditional Timetable Format Works Best**
 
-HK Railway uses a **traditional timetable view design** that Hong Kong residents and visitors are already familiar with from station displays and printed schedules.
+HKMTRVUE uses a **traditional timetable view design** that Hong Kong residents and visitors are already familiar with from station displays and printed schedules.
 
 **Design Benefits:**
 - **Familiar Layout**: Matches the timetable format used in MTR and LRT stations
@@ -79,9 +79,9 @@ HK Railway uses a **traditional timetable view design** that Hong Kong residents
 4. Miss train and wait 15+ minutes for next one ❌
 5. Uncertain about transfer timing at Kowloon Station ❌
 
-**Using Google Maps + HK Railway (Smart Way):**
+**Using Google Maps + HKMTRVUE (Smart Way):**
 1. Use Google Maps for route planning ✅
-2. Open HK Railway → Airport Express next arrival: 6 minutes ✅
+2. Open HKMTRVUE → Airport Express next arrival: 6 minutes ✅
 3. Perfect timing - arrive at platform just as train approaches ✅
 4. Check transfer information during journey ✅
 5. Know exact Kowloon Station arrival time for seamless transfer ✅
@@ -95,7 +95,7 @@ HK Railway uses a **traditional timetable view design** that Hong Kong residents
 - Waste time with unnecessary early arrival
 
 **Smart Commute with Both Apps:**
-1. **Morning Planning**: Check HK Railway at home
+1. **Morning Planning**: Check HKMTRVUE at home
    - Next East Rail trains: 4min, 7min, 11min
    - Choose 7-minute train for comfortable timing
 
@@ -118,7 +118,7 @@ Light Rail in Tuen Mun/Yuen Long has 12 different route numbers (505, 507, 610, 
 
 **Perfect Solution:**
 1. **Google Maps**: Navigate to nearest LRT station
-2. **HK Railway**: See all routes serving that station
+2. **HKMTRVUE**: See all routes serving that station
    - Route 610 to Yuen Long: 3 minutes
    - Route 615 to Yuen Long: 8 minutes  
    - Route 614 to Element: 5 minutes
@@ -134,23 +134,23 @@ Light Rail in Tuen Mun/Yuen Long has 12 different route numbers (505, 507, 610, 
 - **Tourist Volume**: 60+ million visitors annually need simple, accessible solutions
 - **Language Barriers**: International visitors need bilingual support
 
-### **How Google Maps + HK Railway Solves These**
+### **How Google Maps + HKMTRVUE Solves These**
 
 **For Density Navigation:**
 - Google Maps: Overhead view of station locations and exits
-- HK Railway: Precise platform and direction information
+- HKMTRVUE: Precise platform and direction information
 
 **For Complex Interchanges:**  
 - Google Maps: Walking routes between platforms
-- HK Railway: Real-time data for optimal transfer timing
+- HKMTRVUE: Real-time data for optimal transfer timing
 
 **For Rush Hour Optimization:**
 - Google Maps: Crowd-aware routing to less busy stations
-- HK Railway: Live arrival data to avoid crowded trains
+- HKMTRVUE: Live arrival data to avoid crowded trains
 
 **For Tourist Accessibility:**
 - Google Maps: Familiar interface used worldwide
-- HK Railway: No downloads, works in any browser, bilingual interface
+- HKMTRVUE: No downloads, works in any browser, bilingual interface
 
 ## Technical Excellence: Why 10-Second Updates Matter
 
@@ -191,11 +191,11 @@ const CACHE_DURATION = 10000 // 10 seconds - matches train frequency
 
 ## Conclusion: Traditional Design for Modern Transit
 
-HK Railway represents the perfect blend of traditional timetable design with modern real-time data. As a lightweight frontend web app, it respects user privacy by requiring no GPS or location services while providing the familiar timetable view that Hong Kong transit users already know and trust.
+HKMTRVUE represents the perfect blend of traditional timetable design with modern real-time data. As a lightweight frontend web app, it respects user privacy by requiring no GPS or location services while providing the familiar timetable view that Hong Kong transit users already know and trust.
 
 By combining scheduled timetables with real-time government data and integrating seamlessly with Google Maps' navigation, we've created a solution that understands Hong Kong's unique transit needs without compromising on simplicity or privacy.
 
-Whether you're a daily commuter who prefers manual station selection, a tourist exploring Hong Kong without sharing location data, or a business traveler who wants instant timetable access in any browser, HK Railway's traditional view design ensures you have the most accurate, up-to-date information in a familiar format.
+Whether you're a daily commuter who prefers manual station selection, a tourist exploring Hong Kong without sharing location data, or a business traveler who wants instant timetable access in any browser, HKMTRVUE's traditional view design ensures you have the most accurate, up-to-date information in a familiar format.
 
 **Key Benefits:**
 - 📊 **Traditional Timetable View**: Familiar design based on station displays
@@ -204,10 +204,10 @@ Whether you're a daily commuter who prefers manual station selection, a tourist 
 - ⚡ **Instant Access**: Just bookmark and use - works in any browser
 - 🔄 **Real-Time Data**: Official DATA.GOV.HK updates every 10 seconds
 
-The future of urban mobility combines real-time intelligence with user privacy and familiar design. HK Railway is making that future available to everyone in Hong Kong today.
+The future of urban mobility combines real-time intelligence with user privacy and familiar design. HKMTRVUE is making that future available to everyone in Hong Kong today.
 
 ---
 
-**Try HK Railway now**: [Frontend Web App - No Installation Required](https://hk-mtr-lrt-vue-mx6hh11lt-hugos-projects-9d8ef24c.vercel.app/)
+**Try HKMTRVUE now**: [Frontend Web App - No Installation Required](https://hkmtrvue.vercel.app/)
 
-**Open Source**: [https://github.com/HugoLi0213/hkrailwayvueapp](https://github.com/HugoLi0213/hkrailwayvueapp)
+**Open Source**: [https://github.com/HugoLi0213/HKMTRVUE](https://github.com/HugoLi0213/HKMTRVUE)

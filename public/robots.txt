@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap (港鐵時刻表網站地圖)
-Sitemap: https://hk-mtr-lrt-vue-mx6hh11lt-hugos-projects-9d8ef24c.vercel.app/sitemap.xml
+Sitemap: https://hkmtrvue.vercel.app/sitemap.xml
 
 # Crawl-delay for respectful crawling (尊重爬蟲延遲)
 Crawl-delay: 1

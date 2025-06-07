@@ -1,7 +1,7 @@
 {
-  "name": "港鐵時刻表 HK Railway - 港鐵輕鐵實時資訊 Real-time MTR & Light Rail Information",
-  "short_name": "港鐵時刻表",
-  "description": "香港港鐵及輕鐵實時到站資訊，配合Google Maps整合，完美的交通規劃解決方案。Real-time Hong Kong MTR and Light Rail train arrivals with Google Maps integration for seamless transit planning.",
+  "name": "港鐵時刻表 HKMTRVUE - 港鐵輕鐵實時資訊 Real-time MTR & Light Rail Information",
+  "short_name": "HKMTRVUE",
+  "description": "香港港鐵及輕鐵實時到站資訊，配合Google Maps整合的交通規劃解決方案。Real-time Hong Kong MTR and Light Rail train arrivals with Google Maps integration for seamless transit planning.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

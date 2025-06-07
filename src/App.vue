@@ -18,15 +18,14 @@ useTheme()
 const currentPage = ref('mtr')
 
 // SEO Meta Tag Management
-const updateMetaTags = (page: string) => {
-  const metaData = {
+const updateMetaTags = (page: string) => {  const metaData = {
     mtr: {
-      title: 'Hong Kong MTR Real-time Train Arrivals | HK Railway',
+      title: 'Hong Kong MTR Real-time Train Arrivals | HKMTRVUE',
       description: 'Live MTR train arrival times for all Hong Kong lines. Real-time updates every 10 seconds with Google Maps integration for complete journey planning.',
       keywords: 'Hong Kong MTR, real-time train arrival, MTR schedule, Hong Kong transport, MTR app, train times Hong Kong'
     },
     lrt: {
-      title: 'Hong Kong Light Rail (LRT) Live Schedule | HK Railway',
+      title: 'Hong Kong Light Rail (LRT) Live Schedule | HKMTRVUE',
       description: 'Real-time Light Rail arrival information for Tuen Mun and Yuen Long. Complete LRT network coverage with live platform updates and Google Maps routing.',
       keywords: 'Hong Kong Light Rail, LRT schedule, Tuen Mun LRT, Yuen Long transport, Light Rail times, New Territories transit'
     }
@@ -76,7 +75,7 @@ const updateMetaTags = (page: string) => {
   // Update canonical URL
   const canonical = document.querySelector('link[rel="canonical"]')
   if (canonical) {
-    const baseUrl = 'https://hk-mtr-lrt-vue-mx6hh11lt-hugos-projects-9d8ef24c.vercel.app'
+    const baseUrl = 'https://hkmtrvue.vercel.app'
     const pageUrl = page === 'lrt' ? `${baseUrl}/#/light-rail` : baseUrl
     canonical.setAttribute('href', pageUrl)
   }

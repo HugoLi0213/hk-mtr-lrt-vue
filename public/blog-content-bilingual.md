@@ -1,16 +1,16 @@
-# 港鐵時刻表 HK Railway - 雙語SEO內容 Bilingual SEO Content
+# 港鐵時刻表 HKMTRVUE - 雙語SEO內容 Bilingual SEO Content
 
 ## 中文內容 Chinese Content
 
 ### 港鐵時刻表 - 香港最便捷的地鐵查詢工具
 
-港鐵時刻表 (HK Railway) 是專為香港居民和遊客設計的港鐵及輕鐵實時查詢網頁應用程式。採用傳統時刻表設計，提供準確的班次資訊和實時到站時間。
+港鐵時刻表 (HKMTRVUE) 是專為香港居民和遊客設計的港鐵及輕鐵實時查詢網頁應用程式。採用傳統時刻表設計，提供準確的班次資訊和實時到站時間。
 
 #### 主要功能
 - **實時到站資訊**：港鐵各線實時班次查詢
 - **輕鐵時刻表**：完整的輕鐵路線及班次資訊
 - **無需定位**：不需要開啟GPS定位功能
-- **Google Maps 完美伴侶**：搭配Google Maps使用更便利
+- **無需定位權限**：手動選擇車站，保護隱私
 - **政府官方數據**：使用DATA.GOV.HK官方交通數據
 - **每10秒更新**：確保資訊準確及時
 
@@ -51,9 +51,9 @@
 
 ## English Content
 
-### HK Railway - Hong Kong's Most Convenient MTR Query Tool
+### HKMTRVUE - Hong Kong's Most Convenient MTR Query Tool
 
-HK Railway is a web application designed for Hong Kong residents and tourists to check real-time MTR and Light Rail information. With a traditional timetable design, it provides accurate schedule information and real-time arrival times.
+HKMTRVUE is a web application designed for Hong Kong residents and tourists to check real-time MTR and Light Rail information. With a traditional timetable design, it provides accurate schedule information and real-time arrival times.
 
 #### Key Features
 - **Real-time Arrivals**: Live MTR train arrival information

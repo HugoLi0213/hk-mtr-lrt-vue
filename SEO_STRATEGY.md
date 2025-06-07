@@ -1,4 +1,4 @@
-# SEO Monitoring and Optimization Guide for HK Railway
+# SEO Monitoring and Optimization Guide for HKMTRVUE
 
 ## Current SEO Implementation Status ✅
 
@@ -57,7 +57,7 @@
 1. **"Complete Guide to Hong Kong MTR for First-Time Visitors"**
    - Target: International tourists
    - Keywords: Hong Kong MTR guide, tourist MTR tips
-   - Include: HK Railway app integration steps
+   - Include: HKMTRVUE app integration steps
 
 2. **"Rush Hour Survival: Best MTR Routes During Peak Times"**
    - Target: Hong Kong commuters and expats
@@ -69,7 +69,7 @@
    - Keywords: Hong Kong Light Rail vs MTR
    - Include: Coverage area comparisons
 
-4. **"Google Maps + HK Railway: The Ultimate Hong Kong Transit Combo"**
+4. **"Google Maps + HKMTRVUE: The Ultimate Hong Kong Transit Combo"**
    - Target: Tech-savvy users and tourists
    - Keywords: Hong Kong transit apps, Google Maps MTR
    - Include: Step-by-step integration guide
@@ -99,7 +99,7 @@
 ### **Google My Business Optimization**
 ```json
 {
-  "business_name": "HK Railway - Real-time Transit App",
+  "business_name": "HKMTRVUE - Real-time Transit App",
   "category": "Software Company / Public Transportation",
   "description": "Real-time Hong Kong MTR and Light Rail information with Google Maps integration. Free web app for commuters and tourists.",
   "services": [
@@ -110,7 +110,7 @@
     "Offline functionality"
   ],
   "service_area": "Hong Kong SAR",
-  "website": "https://hk-mtr-lrt-vue-mx6hh11lt-hugos-projects-9d8ef24c.vercel.app"
+  "website": "https://hkmtrvue.vercel.app"
 }
 ```
 
@@ -126,7 +126,7 @@
 ### **Facebook/Instagram Strategy**
 - **Page Focus**: Daily MTR updates and tips
 - **Content Types**: Quick tips, route optimizations, app features
-- **Hashtags**: #HongKongMTR #RealTimeTransit #HKRailway #GoogleMaps
+- **Hashtags**: #HongKongMTR #RealTimeTransit #HKMTRVUE #GoogleMaps
 
 ### **LinkedIn Strategy** 
 - **Target**: Hong Kong business professionals and expatriates
@@ -134,7 +134,7 @@
 - **Articles**: Tech insights about real-time data and smart city integration
 
 ### **YouTube SEO Opportunities**
-1. **"How to Use HK Railway App for Hong Kong Transit"** (Tutorial)
+1. **"How to Use HKMTRVUE App for Hong Kong Transit"** (Tutorial)
 2. **"MTR vs Light Rail: Complete Hong Kong Guide"** (Educational)
 3. **"Google Maps + Transit Apps: Hong Kong Travel Hacks"** (How-to)
 
@@ -219,7 +219,7 @@
 - 10,000+ PWA installations
 - Recognized as official community tool by MTR Corporation
 
-# SEO Monitoring and Optimization Guide for HK Railway
+# SEO Monitoring and Optimization Guide for HKMTRVUE
 
 ## ✅ BILINGUAL SEO IMPLEMENTATION COMPLETED (中英雙語SEO實施完成)
 
@@ -276,7 +276,7 @@
 ```html
 <!-- Primary Language: Traditional Chinese -->
 <html lang="zh-HK">
-<title>港鐵時刻表 HK Railway - 港鐵輕鐵實時到站時間</title>
+<title>港鐵時刻表 HKMTRVUE - 港鐵輕鐵實時到站時間</title>
 
 <!-- Hreflang Implementation -->
 <link rel="alternate" hreflang="zh-HK" href="/" />

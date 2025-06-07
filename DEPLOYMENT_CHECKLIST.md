@@ -60,7 +60,7 @@ dist/assets/index-Bb90onxQ.js   92.28 kB │ gzip: 35.42 kB
 - [x] Settings icon: `🎨` ✓
 - [x] Settings text: `外觀` ✓
 - [x] Theme composable: `useTheme()` ✓
-- [x] Bilingual title: `港鐵時刻表 HK Railway` ✓
+- [x] Bilingual title: `港鐵時刻表 HKMTRVUE` ✓
 
 ## 🎯 READY FOR PRODUCTION
 

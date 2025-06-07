@@ -1,8 +1,8 @@
-# HK Railway - MTR & LRT Schedule & Real-time Arrivals
+# HKMTRVUE - MTR & LRT Schedule & Real-time Arrivals
 
-**Use Google Maps for navigation → Use HK Railway for train schedules & real-time arrivals → Complete your Hong Kong journey!**
+**Use Google Maps for navigation → Use HKMTRVUE for train schedules & real-time arrivals → Complete your Hong Kong journey!**
 
-🚇 **The Perfect Google Maps Companion** - While Google Maps gets you to MTR and LRT stations, HK Railway provides schedules and real-time arrival times in a traditional timetable view design. A specialized frontend web app with official DATA.GOV.HK data updated every 10 seconds - no GPS or location services required.
+🚇 **The Google Maps Companion** - While Google Maps gets you to MTR and LRT stations, HKMTRVUE provides schedules and real-time arrival times in a traditional timetable view design. A specialized frontend web app with official DATA.GOV.HK data updated every 10 seconds - no GPS or location services required.
 
 ## 🗺️ How to Use with Google Maps
 
@@ -11,8 +11,8 @@
 - Get walking/driving routes to station entrances
 - See estimated travel time to reach the station
 
-### **Step 2: Check Real-time Arrivals with HK Railway**
-- Open HK Railway web app on your phone
+### **Step 2: Check Real-time Arrivals with HKMTRVUE**
+- Open HKMTRVUE web app on your phone
 - Select your destination station (no GPS location required)
 - See live schedules & arrival times in traditional timetable view updated every 10 seconds
 - Check which platform and direction to take
@@ -34,11 +34,11 @@
 
 ### **For Tourists & Visitors**
 - **Familiar Interface**: Use Google Maps (which you already know) for navigation
-- **No App Downloads**: HK Railway works in any web browser - frontend web app only
+- **No App Downloads**: HKMTRVUE works in any web browser - frontend web app only
 - **No Location Required**: Manual station selection - no GPS or location services needed
 - **Traditional Timetable View**: Easy-to-read scheduled timetables and real-time arrival information
 - **Complete Journey Planning**: From hotel to attraction using both apps together
-- **Language Support**: English and Traditional Chinese in both Google Maps and HK Railway
+- **Language Support**: English and Traditional Chinese in both Google Maps and HKMTRVUE
 
 ### **For All Hong Kong Transit Users**
 - **Perfect Timing**: Arrive at station just as your train is coming
@@ -46,7 +46,7 @@
 - **Weather Protection**: Minimize waiting time on outdoor platforms (especially LRT)
 - **Data Efficiency**: Only use data when you need real-time information
 
-## 🗺️ Google Maps + HK Railway: The Perfect Transit Solution
+## 🗺️ Google Maps + HKMTRVUE: The Perfect Transit Solution
 
 ### **Why Use Both Apps Together?**
 
@@ -56,7 +56,7 @@
 - 📍 Station locations and nearby landmarks
 - 🏢 Integration with restaurants, hotels, attractions
 
-**HK Railway Strengths:**
+**HKMTRVUE Strengths:**
 - 🚇 Real-time train schedules & arrival times in traditional timetable view (updated every 10 seconds)
 - 🚉 Platform and direction information
 - ⏱️ Exact waiting times and train frequencies
@@ -71,13 +71,13 @@ Step 1: Use Google Maps
 🗺️ Search "Hong Kong Airport to Tsim Sha Tsui"
 🚶‍♂️ Follow walking directions to Airport Express platform
 
-Step 2: Use HK Railway  
+Step 2: Use HKMTRVUE  
 🚇 Check Airport Express real-time arrivals
 ⏱️ See next train in 8 minutes, then 18 minutes
 🚉 Confirm Platform 1 for Hong Kong/Kowloon direction
 
 Step 3: During Journey
-📱 Use HK Railway to check Kowloon Station arrival time
+📱 Use HKMTRVUE to check Kowloon Station arrival time
 🔄 Plan transfer to Tsuen Wan Line
 
 Step 4: Final Destination
@@ -87,7 +87,7 @@ Step 4: Final Destination
 #### **Daily Commute: Sha Tin to Central**
 ```
 Step 1: Check Schedule
-📱 Open HK Railway → Select Sha Tin Station (East Rail Line)
+📱 Open HKMTRVUE → Select Sha Tin Station (East Rail Line)
 ⏰ Next train: 3 minutes, then 6 minutes, then 9 minutes
 
 Step 2: Navigate to Station  
@@ -95,7 +95,7 @@ Step 2: Navigate to Station
 🚶‍♂️ 5-minute walk → Perfect timing to catch the 6-minute train
 
 Step 3: Monitor Journey
-📱 HK Railway → Check real-time arrival at Admiralty for transfer
+📱 HKMTRVUE → Check real-time arrival at Admiralty for transfer
 🔄 Transfer to Island Line for Central
 ```
 
@@ -106,7 +106,7 @@ Step 1: Route Planning
 📍 Find nearest LRT stop to your current location
 
 Step 2: Real-time Information
-📱 HK Railway → Select LRT station (e.g., Tuen Mun Town Centre)  
+📱 HKMTRVUE → Select LRT station (e.g., Tuen Mun Town Centre)  
 🚊 Route 610: 4 minutes | Route 615: 7 minutes | Route 614: 12 minutes
 ✅ Choose Route 610 for fastest journey
 
@@ -116,7 +116,7 @@ Step 3: Destination Navigation
 
 ## ✨ Key Features
 
-## ✨ HK Railway Features
+## ✨ HKMTRVUE Features
 
 - 🚇 **Real-time MTR & LRT schedules & arrival times** in traditional timetable view for all Hong Kong lines (updated every 10 seconds)
 - 🕐 **Live train schedules** showing next 3-4 arrivals with exact timing
@@ -160,10 +160,10 @@ Step 3: Destination Navigation
 ```javascript
 // Seamless integration flow:
 1. 🗺️ Google Maps → Find directions to nearest MTR/LRT stations  
-2. 🚇 HK Railway App → Manual station selection (no GPS required) for real-time timetable view
+2. 🚇 HKMTRVUE App → Manual station selection (no GPS required) for real-time timetable view
 3. ⏰ Traditional Timetable Design → Clear scheduled times and live arrival information
 4. 🕐 Smart Timing → Combine walking time + wait time + travel time
-5. 📱 Browser-based → Direct handoff between Google Maps and HK Railway web app
+5. 📱 Browser-based → Direct handoff between Google Maps and HKMTRVUE web app
 ```
 
 #### **Why This Matters for Hong Kong Users**
@@ -177,7 +177,7 @@ Step 3: Destination Navigation
 
 **Scenario 1: Daily Commuter (Sha Tin → Central)**
 ```
-Morning Routine with HK Railway:
+Morning Routine with HKMTRVUE:
 1. Check app at home → See East Rail delays/normal service
 2. Google Maps integration → Walking route to Sha Tin Station  
 3. Real-time platform info → Platform 1 or 2 for southbound trains
@@ -188,7 +188,7 @@ Morning Routine with HK Railway:
 **Scenario 2: Tourist Journey (Airport → Tsim Sha Tsui)**
 ```
 Visitor Experience:
-1. Land at Hong Kong Airport → Open HK Railway web app (no download needed)
+1. Land at Hong Kong Airport → Open HKMTRVUE web app (no download needed)
 2. Airport Express timing → Real-time departures every 10-15 minutes
 3. Kowloon Station arrival → Transfer guidance to Tsuen Wan Line
 4. Google Maps handoff → Walking directions in Tsim Sha Tsui
@@ -317,8 +317,8 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/HugoLi0213/hkrailway.git
-cd hkrailway
+git clone https://github.com/HugoLi0213/HKMTRVUE.git
+cd HKMTRVUE
 ```
 
 2. Install dependencies:

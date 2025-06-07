@@ -9,7 +9,7 @@
     
     <!-- App Title Section -->
     <div class="app-info">
-      <h2 class="app-title">HK Railway</h2>
+      <h2 class="app-title">HKMTRVUE</h2>
       <h3 class="app-subtitle">香港鐵路實時資訊</h3>
       <p class="app-description">
         Real-time MTR & Light Rail arrivals for Hong Kong<br>

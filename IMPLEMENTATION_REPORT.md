@@ -25,7 +25,7 @@
 **Goal**: Enhance SEO with comprehensive Chinese + English bilingual support
 
 **✅ Enhanced Meta Tags**:
-- **Bilingual Title**: 港鐵時刻表 HK Railway - 港鐵輕鐵實時到站時間 MTR LRT Real-time Arrivals
+- **Bilingual Title**: 港鐵時刻表 HKMTRVUE - 港鐵輕鐵實時到站時間 MTR LRT Real-time Arrivals
 - **Bilingual Description**: Chinese + English description optimized for search
 - **50+ Keywords**: Comprehensive Chinese and English keywords including:
   - All MTR lines (東鐵線, 西鐵線, 屯馬線, etc.)
@@ -114,7 +114,7 @@ dist/assets/index-Bb90onxQ.js   92.28 kB │ gzip: 35.42 kB
 
 ### Bilingual SEO (index.html):
 ```html
-<title>港鐵時刻表 HK Railway - 港鐵輕鐵實時到站時間 MTR LRT Real-time Arrivals | Google Maps 完美伴侶</title>
+<title>港鐵時刻表 HKMTRVUE - 港鐵輕鐵實時到站時間 MTR LRT Real-time Arrivals</title>
 <meta name="keywords" content="港鐵時刻表, MTR schedule, 輕鐵班次, LRT schedule, 港鐵到站時間, MTR arrival times, 香港鐵路, Hong Kong railway..." />
 <link rel="alternate" hreflang="zh-HK" href="..." />
 <link rel="alternate" hreflang="en-HK" href="..." />

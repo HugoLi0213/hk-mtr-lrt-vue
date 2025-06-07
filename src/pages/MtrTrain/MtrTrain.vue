@@ -80,7 +80,7 @@
       
       <!-- App Title Section - Outside Settings -->
       <div class="app-title-section">
-        <div class="app-title-small">HK Railway</div>
+        <div class="app-title-small">HKMTRVUE</div>
       </div>
     </div>
   </div>
