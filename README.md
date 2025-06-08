@@ -22,7 +22,7 @@
 - Use Google Maps again for final walking directions from destination station
 - Bookmark frequently used stations for faster access
 
-## 🌟 Why This Combination Works Perfectly for Hong Kong
+
 
 ## 🌟 Why This Combination Works Perfectly for Hong Kong
 
