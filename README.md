@@ -68,154 +68,151 @@ root
 Prerequisites: Node.js 18+ (recommended), npm.
 
 ```bash
+# HKMTRVUE
+
+香港地鐵 (MTR) 與 輕鐵 (LRT) 到站時間簡潔查詢工具。使用 Vue 3 + TypeScript + Vite，並以 Capacitor 打包成 Android 應用；同時可直接以 Web 形式使用。
+
+Lightweight Hong Kong MTR & Light Rail real‑time arrivals viewer. Web + Android (Capacitor) build from the same codebase.
+
+---
+
+## 📌 功能 Features
+
+已完成 Implemented
+- 支援多條港鐵路線 (AEL / TCL / TKL / TML / EAL / SIL / TWL / ISL / KTL 等)
+- 輕鐵：區域 → 車站 → 月台 → 即時班次
+- 列車方向切換 (UP / DOWN) 與車站順序自動反轉
+- 月台 / 目的地 (如資料來源提供) 顯示
+- 中英雙語站名 (繁體 / English)
+- 主題切換：深色 / 淺色
+- 輕鐵自動 10 秒刷新 (選擇車站後)；港鐵畫面手動刷新按鈕
+- 高峰時段指標 (頻率分析基礎 + 指示器占位已接入)
+- 基本 SEO Meta 標籤（標題 / 描述 / 關鍵字 / Open Graph / Twitter）
+- 無路由套件的 hash 導覽，載入快速
+- 簡潔程式體積，無多餘大型 UI 框架
+
+尚未完成 / 計劃中 Planned / Inactive
+- 港鐵頁自動背景刷新（目前僅輕鐵自動）
+- 收藏 / 我的最愛 (composable 及部份組件已存在，尚未整合 UI)
+- 更細緻的高峰指標可視化 (目前僅基礎 placeholder)
+- PWA / 離線快取
+- Vue Router 導航與深層連結 (line / station 參數)
+- 單元測試 / CI 流程與正式簽署金鑰
+
+---
+
+## 🧩 技術棧 Tech Stack
+- Vue 3 + `<script setup>` + TypeScript
+- Vite 构建 / Vercel 部署 (Web)
+- Capacitor + Android (Gradle, ProGuard, 資源壓縮, ABI 分流)
+- 資料來源：DATA.GOV.HK 港鐵 / 輕鐵即時班次 API
+
+### Android 優化 Android Optimizations
+- ProGuard 混淆與壓縮 (`minifyEnabled true` / `shrinkResources true`)
+- ABI 分流 (armeabi-v7a / arm64-v8a / x86 / x86_64 + universal)
+- `supports-screens` + hardwareAcceleration 啟用
+
+---
+
+## 🗂️ 專案結構 Project Structure
+```
+root
+├─ public/        靜態資源 (manifest / sitemap / meta)
+├─ src/
+│  ├─ App.vue     Root + hash 導覽 + 動態 meta
+│  ├─ main.ts     啟動 + Vercel Analytics / Speed Insights
+│  ├─ pages/
+│  │  ├─ MtrTrain/   港鐵到站頁
+│  │  └─ LightRail/  輕鐵巨型單檔組件 (可再拆分)
+│  ├─ components/  可重用 UI
+│  ├─ composables/  主題 / 收藏 / 網絡等 hooks
+│  ├─ constants/   路線與車站設定 `mtrLines.ts`
+│  ├─ types/       TypeScript 型別
+│  └─ utils/       工具 (含頻率分析)
+└─ android/       Capacitor 原生工程
+```
+
+---
+
+## 🚀 快速開始 Quick Start (Web)
+需要：Node.js 18+
+```bash
 git clone https://github.com/HugoLi0213/hkmtrvue.git
 cd hkmtrvue
 npm install
-npm run dev   # starts Vite dev server
+npm run dev     # 啟動開發伺服器
 ```
-
-Build production bundle:
-
+建置 Build：
 ```bash
-npm run build
+npm run build   # 產出 dist/
+npm run preview # 本地預覽生產版本
 ```
-Output goes to `dist/` (consumed by Capacitor for the Android build).
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-## Android Build (Capacitor)
-
-1. Create fresh web assets:
-  ```bash
-  npm run build
-  ```
-2. Sync to native:
-  ```bash
-  npx cap sync android
-  ```
-3. Open in Android Studio (or run Gradle):
-  * Android Studio: Open `android/` folder → build / run.
-  * Command line (Windows):
-    ```cmd
-    cd android
-    gradlew.bat assembleRelease
-    ```
-4. APK/AAB outputs: `android/app/build/outputs/apk/` (split + universal builds if enabled in `app/build.gradle`).
-
-Signing: Current repository configuration still uses debug signing for generated release artifacts (no production keystore committed). Create your own keystore before distribution on stores.
-
-## Key Configuration (Android)
-
-* ABI splits & universal APK: defined in `android/app/build.gradle` under `splits { abi { ... } }`
-* Resource shrinking + code minification: `minifyEnabled true`, `shrinkResources true` (release build type)
-* ProGuard rules: `android/app/proguard-rules.pro`
-* Manifest enhancements: screen support + hardware acceleration enabled
-
-## Development Notes
-
-* Manual refresh only: To add auto refresh, introduce an interval inside `onMounted` in `MtrTrain.vue` & `LightRail.vue` and clear it on unmount.
-* Peak hour analysis utility (`frequencyAnalyzer`) collects data but related UI (PeakHourIndicator) is disabled; reinstate by uncommenting import & template block once component exists.
-* Large single‑file components (`LightRail.vue`, `MtrTrain.vue`) could be refactored into smaller subcomponents for maintainability.
-
-## Roadmap (Suggestions)
-
-* Implement auto polling with exponential backoff on errors
-* Integrate favorites/bookmarks (currently unused `useFavoriteStations.ts` / related components)
-* Restore Peak Hour Indicator UI
-* Add Vue Router for cleaner navigation & potential deep links (e.g. line/station parameters)
-* Add PWA support (service worker + offline shell)
-* Unit tests for utility helpers & composables
-
-## Limitations
-
-* No offline caching beyond browser defaults
-* No error toast system (inline error blocks only)
-* Light Rail component is very large ( > 2k lines ) making future changes harder
-* No production signing keystore or CI pipeline in repo
-
-## License
-
-MIT License – see `LICENSE`.
-
-## Acknowledgements
-
-* Hong Kong Government & DATA.GOV.HK for open transport data
-* MTR Corporation (source of the real‑time schedules via public API)
 
 ---
-Made in Hong Kong. Contributions & issue reports welcome.
 
-# Open in Android Studio
-
-npx cap open android
-
-
-
-# Or build APK directly✅ Instant access  - ⚡ **Fast & Efficient** - Minimal data usage, works offline
-
+## 📱 Android 打包 Android Build
+```bash
+npm run build          # 產出 dist 靜態資產
+npx cap sync android   # 同步至 android 原生工程
 cd android
-
-./gradlew assembleRelease✅ Always up-to-date  
-
+gradlew.bat assembleRelease   # Windows
 ```
+產物輸出：`android/app/build/outputs/apk/`
 
-✅ Mobile & desktop friendly- 🌏 **Bilingual Support** - English & Traditional Chinese⚡ **Fast & Efficient**
+簽署：目前使用 debug 簽署 (未附生產 keystore)，正式發佈請建立自己的 keystore。
 
-### Project Structure
+關鍵設定：`app/build.gradle` (splits / shrink / proguard)，`proguard-rules.pro`，`AndroidManifest.xml`。
 
-```
+---
 
-hkmtrvue/
+## 🔄 刷新機制 Refresh Logic
+- 輕鐵頁：已實作 `setInterval` 10 秒自動刷新（有選擇車站時）
+- 港鐵頁：使用者手動點擊刷新按鈕（可於 `onMounted` 加入自動輪詢擴充）
 
-├── src/</td>- 📱 **Cross-Platform** - Android app & web version- No GPS or location services required
+---
 
-│   ├── pages/          # Page components (MTR, LRT, Home)
+## � 高峰指標 Peak Hour Indicator
+已包含頻率分析 `frequencyAnalyzer` 與佔位標籤；UI 組件 `PeakHourIndicator` 尚部分註解，可按需要解除註解並擴充統計視覺化（例如平均間隔、移動視窗計算尖峰）。
 
-│   ├── components/     # Reusable UI components</tr>
+---
 
-│   ├── composables/    # Vue composables (theme, data fetching)
+## ⚠ 限制 Limitations
+- 無離線快取 / PWA
+- 無通知 / 錯誤提示彈層（僅內嵌訊息）
+- 輕鐵單檔過大 (>2k 行) 後續需模組化
+- 未提供正式簽署金鑰與 CI/CD
 
-│   ├── constants/      # MTR line configurations</table>- Works offline with cached data
+---
 
-│   ├── types/          # TypeScript type definitions
+## 🛣 Roadmap (建議方向)
+- 拆分大型組件 (LightRail / MtrTrain)
+- 自動刷新統一化與退避機制 (exponential backoff)
+- 收藏 / 我的最愛整合 UI
+- PWA + 離線緩存 / 安裝體驗
+- Vue Router 深層連結 (line / station)
+- 單元測試 (Vitest) + GitHub Actions CI
+- 更完整高峰指標圖表 (折線 / 熱度格)
 
-│   └── utils/          # Helper functions
+---
 
-├── android/            # Android native project
+## 📡 Data Sources
+- DATA.GOV.HK 交通實時資料 (MTR / LRT)
+  - https://data.gov.hk
+- 版權屬原資料提供者；本專案僅顯示。
 
-├── public/             # Static assets------- Minimal data usage
+---
 
-└── docs/              # Documentation
+## 🧾 License
+MIT License — 見 `LICENSE`。
 
-```
+---
 
+## � Acknowledgements
+- Hong Kong Government & DATA.GOV.HK (open transport data)
+- MTR Corporation (realtime schedules)
 
-
----## 🎯 Features
-
-
-
-## Performance
-
-
-
-- APK Size: 1.9 MB (40% reduction from 3.2 MB)### 🚇 MTR Lines Coverage## 📥 Download🌏 **Bilingual**
-
-- Load Time: < 2 seconds on 4G
-
-- Data Usage: ~50 KB per minute of useAll major lines supported including:
-
-- Battery Impact: Minimal with smart refresh logic
-
-- Screen Support: All Android devices (phones, tablets, foldables)- **Island Line** | **Tsuen Wan Line** | **Kwun Tong Line**- English & Traditional Chinese
-
-
-
----- **Tseung Kwan O Line** | **Tuen Ma Line** | **East Rail Line**
+---
+Made in Hong Kong · 歡迎 issue / PR
 
 
 
