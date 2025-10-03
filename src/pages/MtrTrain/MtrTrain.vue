@@ -21,11 +21,11 @@
       </div>
       
       <!-- Peak Hour Indicator -->
-      <PeakHourIndicator 
+      <!-- <PeakHourIndicator 
         v-if="!error && !loading"
         :lineCode="selectedLine"
         :showStats="true"
-      />
+      /> -->
       
       <!-- Error State -->
       <div v-if="error" class="error">
@@ -138,7 +138,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useTheme } from '../../composables/useTheme';
 import { MTR_LINES } from '../../constants/mtrLines';
 import type { Direction, Language, LineConfig, MtrLineCode, StationConfig, StationData, TrainArrival } from '../../types/train';
-import PeakHourIndicator from '../../components/PeakHourIndicator.vue';
+// import PeakHourIndicator from '../../components/PeakHourIndicator.vue';
 import { frequencyAnalyzer } from '../../utils/trainFrequencyAnalyzer';
 
 // Initialize theme system

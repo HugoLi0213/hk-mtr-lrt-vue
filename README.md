@@ -1,204 +1,743 @@
-# HKMTRVUE - MTR & LRT Schedule & Real-time Arrivals
-
-**Use Google Maps for navigation → Use HKMTRVUE for train schedules & real-time arrivals → Complete your Hong Kong journey!**
-
-🚇 **The Google Maps Companion** - While Google Maps gets you to MTR and LRT stations, HKMTRVUE provides schedules and real-time arrival times in a traditional timetable view design. A specialized frontend web app with official DATA.GOV.HK data updated every 10 seconds - no GPS or location services required.
-
-## 🗺️ How to Use with Google Maps
-
-### **Step 1: Navigate with Google Maps**
-- Use Google Maps to find directions to any MTR or Light Rail station
-- Get walking/driving routes to station entrances
-- See estimated travel time to reach the station
-
-### **Step 2: Check Real-time Arrivals with HKMTRVUE**
-- Open HKMTRVUE web app on your phone
-- Select your destination station (no GPS location required)
-- See live schedules & arrival times in traditional timetable view updated every 10 seconds
-- Check which platform and direction to take
-
-### **Step 3: Complete Your Journey**
-- Board the train with confidence knowing exact arrival times
-- Use Google Maps again for final walking directions from destination station
-- Bookmark frequently used stations for faster access
+<div align="center"><div align="center"><div align="center">
 
 
 
-## 🌟 Why This Combination Works Perfectly for Hong Kong
+# 🚇 HKMTRVUE
 
-### **For Daily Commuters**
-- **Google Maps Navigation**: Get the fastest route to your nearest MTR/LRT station
-- **Real-time Train Data**: Check exact arrival times so you don't rush unnecessarily
-- **Platform Information**: Know which platform and direction before you arrive
-- **Transfer Planning**: See connections and timing for multi-line journeys
 
-### **For Tourists & Visitors**
-- **Familiar Interface**: Use Google Maps (which you already know) for navigation
-- **No App Downloads**: HKMTRVUE works in any web browser - frontend web app only
-- **No Location Required**: Manual station selection - no GPS or location services needed
-- **Traditional Timetable View**: Easy-to-read scheduled timetables and real-time arrival information
-- **Complete Journey Planning**: From hotel to attraction using both apps together
-- **Language Support**: English and Traditional Chinese in both Google Maps and HKMTRVUE
 
-### **For All Hong Kong Transit Users**
-- **Perfect Timing**: Arrive at station just as your train is coming
-- **Avoid Crowds**: Choose less crowded trains by seeing multiple arrival times
-- **Weather Protection**: Minimize waiting time on outdoor platforms (especially LRT)
-- **Data Efficiency**: Only use data when you need real-time information
+### Hong Kong MTR & Light Rail Real-Time Tracker# 🚇 HKMTRVUE# 🚇 HKMTRVUE
 
-## 🗺️ Google Maps + HKMTRVUE: The Perfect Transit Solution
+
+
+[![Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/HugoLi0213/hkmtrvue/releases)
+
+[![Web App](https://img.shields.io/badge/Launch-Web%20App-blue?style=for-the-badge&logo=google-chrome)](https://hkmtrvue.vercel.app)
+
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)### Hong Kong MTR & Light Rail Real-Time Tracker### Hong Kong MTR & Light Rail Real-Time Tracker
+
+
+
+**Track Hong Kong trains in real-time with live arrival information**
+
+
+
+[Download](#-download) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Development](#-development)[![Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/HugoLi0213/hkmtrvue/releases)[![Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/HugoLi0213/hkmtrvue/releases)
+
+
+
+---[![Web App](https://img.shields.io/badge/Launch-Web%20App-blue?style=for-the-badge&logo=google-chrome)](https://hkmtrvue.vercel.app)[![Web App](https://img.shields.io/badge/Launch-Web%20App-blue?style=for-the-badge&logo=google-chrome)](https://hkmtrvue.vercel.app)
+
+
+
+![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=flat&logo=vue.js&logoColor=4FC08D)[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+
+![Android](https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white)
+
+![Capacitor](https://img.shields.io/badge/Capacitor-119EFF?style=flat&logo=capacitor&logoColor=white)
+
+**Track Hong Kong trains in real-time with live arrival information****Track Hong Kong trains in real-time with live arrival information**
+
+</div>
+
+
+
+---
+
+[Download](#-download) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Development](#-development)[Features](#-features) • [Download](#-download) • [Tech Stack](#-tech-stack) • [Development](#-development)
+
+## 📱 What is HKMTRVUE?
+
+
+
+HKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.
+
+------
+
+### ✨ Key Highlights
+
+
+
+- 🚆 **Real-Time Tracking** - Live arrivals updated every 10 seconds
+
+- 🎨 **Beautiful Interface** - Clean design with dark/light themes<img src="https://img.shields.io/badge/Vue.js-35495E?style=flat&logo=vue.js&logoColor=4FC08D" alt="Vue.js"></div>
+
+- ⚡ **Fast & Efficient** - Minimal data usage, smart caching
+
+- 🌏 **Bilingual Support** - English & Traditional Chinese<img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+
+- 📱 **Cross-Platform** - Android app & web version
+
+<img src="https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white" alt="Android">## 📱 What is HKMTRVUE?
+
+---
+
+<img src="https://img.shields.io/badge/Capacitor-119EFF?style=flat&logo=capacitor&logoColor=white" alt="Capacitor">
+
+## 📥 Download
+
+HKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.
+
+<table>
+
+<tr></div>
+
+<td align="center" width="50%">
+
+### ✨ Key Features
+
+### 📱 Android App
+
+---
+
+**APK Size:** 1.9 MB  
+
+**Supports:** Android 5.0+🚆 **Real-Time Tracking**
+
+
+
+[Download Latest Release](https://github.com/HugoLi0213/hkmtrvue/releases)## 📱 What is HKMTRVUE?- Live arrival times updated every 10 seconds
+
+
+
+✅ Universal - works on all devices  - All MTR lines & Light Rail routes supported
+
+✅ Optimized size (40% smaller)  
+
+✅ No Google Play requiredHKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.- Platform and direction information
+
+
+
+</td>
+
+<td align="center" width="50%">
+
+### ✨ Key Highlights🎨 **Beautiful Design**
+
+### 🌐 Web App
+
+- Clean, modern interface
+
+**No Installation Required**  
+
+**Works on:** Any browser- 🚆 **Real-Time Tracking** - Live arrivals updated every 10 seconds- Dark & Light mode support
+
+
+
+[Launch Web App](https://hkmtrvue.vercel.app)- 🎨 **Beautiful Interface** - Clean design with dark/light themes- Responsive for all devices
+
+
+
+✅ Instant access  - ⚡ **Fast & Efficient** - Minimal data usage, works offline
+
+✅ Always up-to-date  
+
+✅ Mobile & desktop friendly- 🌏 **Bilingual Support** - English & Traditional Chinese⚡ **Fast & Efficient**
+
+
+
+</td>- 📱 **Cross-Platform** - Android app & web version- No GPS or location services required
+
+</tr>
+
+</table>- Works offline with cached data
+
+
+
+------- Minimal data usage
+
+
+
+## 🎯 Features
+
+
+
+### 🚇 MTR Lines Coverage## 📥 Download🌏 **Bilingual**
+
+All major lines supported including:
+
+- **Island Line** | **Tsuen Wan Line** | **Kwun Tong Line**- English & Traditional Chinese
+
+- **Tseung Kwan O Line** | **Tuen Ma Line** | **East Rail Line**
+
+- **South Island Line** | **Airport Express** | **Tung Chung Line**<table>- Automatic language detection
+
+
+
+### 🚊 Light Rail Transit<tr>
+
+- Complete LRT network in Tuen Mun & Yuen Long
+
+- All 12 routes supported (505, 507, 610, 614, 615, etc.)<td align="center" width="50%">---
+
+- 68 stations covered
+
+
+
+### ⚡ Core Features
+
+- ⏱️ **10-Second Auto-Refresh** - Fastest real-time data updates### 📱 Android App## 📥 Download
+
+- 📊 **Timetable View** - Traditional schedule display
+
+- 🌓 **Dark & Light Mode** - Comfortable viewing anytime
+
+- 🔄 **Smart Caching** - Saves your mobile data
+
+- 🚇 **Line Selection** - Easy switching between MTR lines**APK Size:** 1.9 MB  ### Android App
+
+- 🚉 **Platform Information** - Know which platform to go to
+
+- 🔍 **Station Search** - Find stations quickly by region**Supports:** Android 5.0+Download the latest APK from [Releases](https://github.com/HugoLi0213/hkmtrvue/releases)
+
+- ⚡ **Instant Loading** - Optimized performance
+
+
+
+---
+
+[Download Latest Release](https://github.com/HugoLi0213/hkmtrvue/releases)**Latest Version:** v1.0 (1.9 MB)
+
+## 🛠️ Tech Stack
+
+- ✅ Universal APK - works on all Android devices
+
+### Frontend
+
+- **Vue 3** - Progressive JavaScript framework✅ Universal - works on all devices  - ✅ Optimized size (40% smaller)
+
+- **TypeScript** - Type-safe development
+
+- **Vite** - Lightning-fast build tool✅ Optimized size (40% smaller)  - ✅ Supports Android 5.0+
+
+- **Capacitor** - Cross-platform native runtime
+
+✅ No Google Play required
+
+### Backend & APIs
+
+- **DATA.GOV.HK** - Official Hong Kong government data### Web App
+
+- **MTR API** - Real-time train information
+
+- **Vercel** - Web hosting & deployment</td>Visit **[hkmtrvue.vercel.app](https://hkmtrvue.vercel.app)** in any browser
+
+
+
+### Mobile<td align="center" width="50%">
+
+- **Android SDK** - Native Android support
+
+- **Gradle** - Build automation---
+
+- **ProGuard** - Code optimization & minification
+
+### 🌐 Web App
+
+---
+
+## 🎯 Features
+
+## 💻 Development
+
+**No Installation Required**  
+
+### Prerequisites
+
+- Node.js 16+ **Works on:** Any browser<table>
+
+- npm or pnpm
+
+- Android Studio (for Android development)<tr>
+
+
+
+### Quick Start[Launch Web App](https://hkmtrvue.vercel.app)<td width="50%">
+
+
+
+```bash
+
+# Clone repository
+
+git clone https://github.com/HugoLi0213/hkmtrvue.git✅ Instant access  ### 🚇 MTR Lines Supported
+
+cd hkmtrvue
+
+✅ Always up-to-date  - East Rail Line (ERL)
+
+# Install dependencies
+
+npm install✅ Mobile & desktop friendly- Tuen Ma Line (TML)
+
+
+
+# Start development server- Tung Chung Line (TCL)
+
+npm run dev
+
+</td>- Airport Express (AEL)
+
+# Build for production
+
+npm run build</tr>- West Rail Line (WRL)
+
+```
+
+</table>- All other MTR lines
+
+### Android Development
+
+
+
+```bash
+
+# Build web assets---</td>
+
+npm run build
+
+<td width="50%">
+
+# Sync with Capacitor
+
+npx cap sync android## 🎯 Features
+
+
+
+# Open in Android Studio### 🚊 Light Rail
+
+npx cap open android
+
+### 🚇 MTR Lines Coverage- All LRT routes
+
+# Or build APK directly
+
+cd androidAll major lines supported including:- Real-time arrivals
+
+./gradlew assembleRelease
+
+```- **Island Line** | **Tsuen Wan Line** | **Kwun Tong Line**- Route information
+
+
+
+### Project Structure- **Tseung Kwan O Line** | **Tuen Ma Line** | **East Rail Line**- Stop details
+
+```
+
+hkmtrvue/- **South Island Line** | **Airport Express** | **Tung Chung Line**
+
+├── src/
+
+│   ├── pages/          # Page components (MTR, LRT, Home)</td>
+
+│   ├── components/     # Reusable UI components
+
+│   ├── composables/    # Vue composables (theme, data fetching)### 🚊 Light Rail Transit</tr>
+
+│   ├── constants/      # MTR line configurations
+
+│   ├── types/          # TypeScript type definitions- Complete LRT network in Tuen Mun & Yuen Long</table>
+
+│   └── utils/          # Helper functions
+
+├── android/            # Android native project- All 12 routes supported (505, 507, 610, 614, 615, etc.)
+
+├── public/             # Static assets
+
+└── docs/              # Documentation- 68 stations covered### Additional Features
+
+```
+
+- 🔖 Bookmark favorite stations
+
+---
+
+### ⚡ Core Features- 🔄 Auto-refresh every 10 seconds
+
+## 🔧 Configuration
+
+- ⏱️ **10-Second Updates** - Fastest real-time data- 📊 Traditional timetable view
+
+### Build Optimization
+
+The Android APK is optimized with:- 🔖 **Bookmark Stations** - Quick access to favorites- 🎨 Customizable themes
+
+- ✅ Code minification (ProGuard)
+
+- ✅ Resource shrinking- 📊 **Timetable View** - Traditional schedule display- � Mobile-optimized interface
+
+- ✅ Multi-architecture support (ARM, x86)
+
+- ✅ Split APKs for smaller downloads- 🌓 **Dark Mode** - Comfortable viewing anytime
+
+- ✅ Support for all screen sizes
+
+- 📳 **Haptic Feedback** - Enhanced mobile experience---
+
+---
+
+- 🔄 **Smart Caching** - Saves your mobile data
+
+## 📊 Performance
 
 ### **Why Use Both Apps Together?**
 
-**Google Maps Strengths:**
-- 🚶‍♂️ Walking/driving directions to stations
+- **APK Size:** 1.9 MB (40% reduction from 3.2 MB)
+
+- **Load Time:** < 2 seconds on 4G---
+
+- **Data Usage:** ~50 KB per minute of use
+
+- **Battery Impact:** Minimal with smart refresh logic**Google Maps Strengths:**
+
+- **Screen Support:** All Android devices (phones, tablets, foldables)
+
+## 🛠️ Tech Stack- 🚶‍♂️ Walking/driving directions to stations
+
+---
+
 - 🗺️ Overview of entire Hong Kong transit network  
-- 📍 Station locations and nearby landmarks
-- 🏢 Integration with restaurants, hotels, attractions
 
-**HKMTRVUE Strengths:**
-- 🚇 Real-time train schedules & arrival times in traditional timetable view (updated every 10 seconds)
+## 🤝 Contributing
+
+### Frontend- 📍 Station locations and nearby landmarks
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+- **Vue 3** - Progressive JavaScript framework- 🏢 Integration with restaurants, hotels, attractions
+
+1. Fork the repository
+
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)- **TypeScript** - Type-safe development
+
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+
+4. Push to the branch (`git push origin feature/AmazingFeature`)- **Vite** - Lightning-fast build tool**HKMTRVUE Strengths:**
+
+5. Open a Pull Request
+
+- **Capacitor** - Cross-platform native runtime- 🚇 Real-time train schedules & arrival times in traditional timetable view (updated every 10 seconds)
+
+---
+
 - 🚉 Platform and direction information
-- ⏱️ Exact waiting times and train frequencies
-- 📱 Lightweight frontend web app - no installation or GPS required
+
+## 📝 License
+
+### Backend & APIs- ⏱️ Exact waiting times and train frequencies
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+- **DATA.GOV.HK** - Official Hong Kong government data- 📱 Lightweight frontend web app - no installation or GPS required
+
+---
+
+- **MTR API** - Real-time train information
+
+## 👤 Author
+
+- **Vercel** - Web hosting & deployment### **Combined Workflow Examples**
+
+**Hugo Li**
 
 ### **Combined Workflow Examples**
-### **Combined Workflow Examples**
 
-#### **Tourist Journey: Airport to Tsim Sha Tsui**
-```
-Step 1: Use Google Maps
-🗺️ Search "Hong Kong Airport to Tsim Sha Tsui"
-🚶‍♂️ Follow walking directions to Airport Express platform
+- 📧 Email: s12332146@gmail.com
 
-Step 2: Use HKMTRVUE  
+- 🐙 GitHub: [@HugoLi0213](https://github.com/HugoLi0213)### Mobile
+
+- 🌐 Web: [hkmtrvue.vercel.app](https://hkmtrvue.vercel.app)
+
+- **Android SDK** - Native Android support#### **Tourist Journey: Airport to Tsim Sha Tsui**
+
+---
+
+- **Gradle** - Build automation```
+
+## 🙏 Acknowledgments
+
+- **ProGuard** - Code optimizationStep 1: Use Google Maps
+
+- **DATA.GOV.HK** - For providing open data APIs
+
+- **MTR Corporation** - For real-time train information🗺️ Search "Hong Kong Airport to Tsim Sha Tsui"
+
+- **Hong Kong Government** - For supporting open data initiatives
+
+---🚶‍♂️ Follow walking directions to Airport Express platform
+
+---
+
+
+
+<div align="center">
+
+## 💻 DevelopmentStep 2: Use HKMTRVUE  
+
+**Made with ❤️ in Hong Kong**
+
 🚇 Check Airport Express real-time arrivals
-⏱️ See next train in 8 minutes, then 18 minutes
-🚉 Confirm Platform 1 for Hong Kong/Kowloon direction
 
-Step 3: During Journey
+⭐ Star this repo if you find it useful!
+
+### Prerequisites⏱️ See next train in 8 minutes, then 18 minutes
+
+[Report Bug](https://github.com/HugoLi0213/hkmtrvue/issues) • [Request Feature](https://github.com/HugoLi0213/hkmtrvue/issues)
+
+- Node.js 16+ 🚉 Confirm Platform 1 for Hong Kong/Kowloon direction
+
+</div>
+
+- npm or pnpm
+
+- Android Studio (for Android development)Step 3: During Journey
+
 📱 Use HKMTRVUE to check Kowloon Station arrival time
-🔄 Plan transfer to Tsuen Wan Line
 
-Step 4: Final Destination
-🗺️ Use Google Maps for walking directions from Tsim Sha Tsui Station to hotel
-```
+### Quick Start🔄 Plan transfer to Tsuen Wan Line
+
+
+
+```bashStep 4: Final Destination
+
+# Clone repository🗺️ Use Google Maps for walking directions from Tsim Sha Tsui Station to hotel
+
+git clone https://github.com/HugoLi0213/hkmtrvue.git```
+
+cd hkmtrvue
 
 #### **Daily Commute: Sha Tin to Central**
-```
-Step 1: Check Schedule
+
+# Install dependencies```
+
+npm installStep 1: Check Schedule
+
 📱 Open HKMTRVUE → Select Sha Tin Station (East Rail Line)
-⏰ Next train: 3 minutes, then 6 minutes, then 9 minutes
+
+# Start development server⏰ Next train: 3 minutes, then 6 minutes, then 9 minutes
+
+npm run dev
 
 Step 2: Navigate to Station  
-🗺️ Google Maps → "Directions to Sha Tin MTR Station"
-🚶‍♂️ 5-minute walk → Perfect timing to catch the 6-minute train
+
+# Build for production🗺️ Google Maps → "Directions to Sha Tin MTR Station"
+
+npm run build🚶‍♂️ 5-minute walk → Perfect timing to catch the 6-minute train
+
+```
 
 Step 3: Monitor Journey
-📱 HKMTRVUE → Check real-time arrival at Admiralty for transfer
+
+### Android Development📱 HKMTRVUE → Check real-time arrival at Admiralty for transfer
+
 🔄 Transfer to Island Line for Central
+
+```bash```
+
+# Build web assets
+
+npm run build#### **Light Rail Journey: Tuen Mun to Yuen Long**
+
 ```
 
-#### **Light Rail Journey: Tuen Mun to Yuen Long**
-```
-Step 1: Route Planning
-🗺️ Google Maps → Overview of LRT network and stations
+# Sync with CapacitorStep 1: Route Planning
+
+npx cap sync android🗺️ Google Maps → Overview of LRT network and stations
+
 📍 Find nearest LRT stop to your current location
 
-Step 2: Real-time Information
-📱 HKMTRVUE → Select LRT station (e.g., Tuen Mun Town Centre)  
-🚊 Route 610: 4 minutes | Route 615: 7 minutes | Route 614: 12 minutes
-✅ Choose Route 610 for fastest journey
+# Open in Android Studio
 
-Step 3: Destination Navigation
+npx cap open androidStep 2: Real-time Information
+
+📱 HKMTRVUE → Select LRT station (e.g., Tuen Mun Town Centre)  
+
+# Or build APK directly🚊 Route 610: 4 minutes | Route 615: 7 minutes | Route 614: 12 minutes
+
+cd android✅ Choose Route 610 for fastest journey
+
+./gradlew assembleRelease
+
+```Step 3: Destination Navigation
+
 🗺️ Google Maps → Walking directions from Yuen Long LRT station
+
+### Project Structure```
+
 ```
 
-## ✨ Key Features
+hkmtrvue/## ✨ Key Features
 
-## ✨ HKMTRVUE Features
+├── src/
 
-- 🚇 **Real-time MTR & LRT schedules & arrival times** in traditional timetable view for all Hong Kong lines (updated every 10 seconds)
-- 🕐 **Live train schedules** showing next 3-4 arrivals with exact timing
-- 🚉 **Platform and direction information** so you know exactly where to go
-- 📱 **Mobile-optimized frontend web app** - no installation, GPS, or location services required, works in any browser
-- ⚡ **10-second refresh rate** - fastest real-time data in Hong Kong
-- 🌐 **Bilingual support** (English/Traditional Chinese) for all users
-- 💾 **Bookmark favorite stations** for quick access to frequently used routes
-- 🌙 **Dark mode support** for comfortable viewing day and night
+│   ├── pages/          # Page components## ✨ HKMTRVUE Features
+
+│   ├── components/     # Reusable components
+
+│   ├── composables/    # Vue composables- 🚇 **Real-time MTR & LRT schedules & arrival times** in traditional timetable view for all Hong Kong lines (updated every 10 seconds)
+
+│   ├── constants/      # Configuration data- 🕐 **Live train schedules** showing next 3-4 arrivals with exact timing
+
+│   ├── types/          # TypeScript types- 🚉 **Platform and direction information** so you know exactly where to go
+
+│   └── utils/          # Helper functions- 📱 **Mobile-optimized frontend web app** - no installation, GPS, or location services required, works in any browser
+
+├── android/            # Android native project- ⚡ **10-second refresh rate** - fastest real-time data in Hong Kong
+
+├── public/             # Static assets- 🌐 **Bilingual support** (English/Traditional Chinese) for all users
+
+└── docs/              # Documentation- 💾 **Bookmark favorite stations** for quick access to frequently used routes
+
+```- 🌙 **Dark mode support** for comfortable viewing day and night
+
 - 📳 **Haptic feedback** for enhanced mobile experience
-- 🔄 **Auto-refresh technology** with smart caching to save your data
 
-## 🚀 Technical Excellence & Hong Kong-Specific Optimizations
+---- 🔄 **Auto-refresh technology** with smart caching to save your data
 
-### **Data Sources & Reliability**
-- **Official Government APIs**: Direct integration with DATA.GOV.HK transport endpoints
-- **MTR Corporation Data**: Real-time train schedules from MTR's official systems
-- **10-Second Refresh Cycle**: Perfectly tuned for Hong Kong's high-frequency train service
-- **Resilient Error Handling**: Exponential backoff and retry mechanisms for Hong Kong's mobile network conditions
+
+
+## 🔧 Configuration## 🚀 Technical Excellence & Hong Kong-Specific Optimizations
+
+
+
+### Environment Variables### **Data Sources & Reliability**
+
+Create a `.env` file for custom configuration:- **Official Government APIs**: Direct integration with DATA.GOV.HK transport endpoints
+
+```env- **MTR Corporation Data**: Real-time train schedules from MTR's official systems
+
+VITE_API_BASE_URL=https://rt.data.gov.hk/v1/transport/mtr- **10-Second Refresh Cycle**: Perfectly tuned for Hong Kong's high-frequency train service
+
+VITE_REFRESH_INTERVAL=10000- **Resilient Error Handling**: Exponential backoff and retry mechanisms for Hong Kong's mobile network conditions
+
+```
 
 ### **Hong Kong Transit System Coverage**
-#### **MTR Lines Supported:**
-- 🔵 **Island Line** (港島綫): Chai Wan ↔ Kennedy Town
-- 🔴 **Tsuen Wan Line** (荃灣綫): Tsuen Wan ↔ Central  
-- 🟢 **Kwun Tong Line** (觀塘綫): Tiu Keng Leng ↔ Whampoa
-- 🟣 **Tseung Kwan O Line** (將軍澳綫): Po Lam/LOHAS Park ↔ North Point
-- 🟤 **Tuen Ma Line** (屯馬綫): Tuen Mun ↔ Wu Kai Sha
+
+### Build Optimization#### **MTR Lines Supported:**
+
+The Android APK is optimized with:- 🔵 **Island Line** (港島綫): Chai Wan ↔ Kennedy Town
+
+- ✅ Code minification (ProGuard)- 🔴 **Tsuen Wan Line** (荃灣綫): Tsuen Wan ↔ Central  
+
+- ✅ Resource shrinking- 🟢 **Kwun Tong Line** (觀塘綫): Tiu Keng Leng ↔ Whampoa
+
+- ✅ Multi-architecture support (ARM, x86)- 🟣 **Tseung Kwan O Line** (將軍澳綫): Po Lam/LOHAS Park ↔ North Point
+
+- ✅ Split APKs for smaller downloads- 🟤 **Tuen Ma Line** (屯馬綫): Tuen Mun ↔ Wu Kai Sha
+
 - 🔵 **East Rail Line** (東鐵綫): Lo Wu/Lok Ma Chau ↔ Admiralty
-- 🟡 **South Island Line** (南港島綫): South Horizons ↔ Admiralty
+
+---- 🟡 **South Island Line** (南港島綫): South Horizons ↔ Admiralty
+
 - 🟢 **Airport Express** (機場快綫): AsiaWorld Expo ↔ Hong Kong
-- 🟠 **Tung Chung Line** (東涌綫): Tung Chung ↔ Hong Kong
 
-#### **Light Rail Transit (LRT) Coverage:**
-- 🔴 **Complete LRT Network** in Tuen Mun and Yuen Long districts
-- **68 LRT Stations** across New Territories West
-- **12 LRT Route Numbers** (505, 507, 610, 614, 614P, 615, 615P, 705, 706, 751, 751P, 761P)
+## 📊 Performance- 🟠 **Tung Chung Line** (東涌綫): Tung Chung ↔ Hong Kong
 
-### **Integration with Hong Kong's Digital Ecosystem**
 
-#### **Google Maps Connectivity**
+
+- **APK Size:** 1.9 MB (40% reduction from 3.2 MB)#### **Light Rail Transit (LRT) Coverage:**
+
+- **Load Time:** < 2 seconds on 4G- 🔴 **Complete LRT Network** in Tuen Mun and Yuen Long districts
+
+- **Data Usage:** ~50 KB per minute of use- **68 LRT Stations** across New Territories West
+
+- **Battery Impact:** Minimal with smart refresh logic- **12 LRT Route Numbers** (505, 507, 610, 614, 614P, 615, 615P, 705, 706, 751, 751P, 761P)
+
+
+
+---### **Integration with Hong Kong's Digital Ecosystem**
+
+
+
+## 🤝 Contributing#### **Google Maps Connectivity**
+
 ```javascript
-// Seamless integration flow:
-1. 🗺️ Google Maps → Find directions to nearest MTR/LRT stations  
-2. 🚇 HKMTRVUE App → Manual station selection (no GPS required) for real-time timetable view
-3. ⏰ Traditional Timetable Design → Clear scheduled times and live arrival information
-4. 🕐 Smart Timing → Combine walking time + wait time + travel time
-5. 📱 Browser-based → Direct handoff between Google Maps and HKMTRVUE web app
-```
 
-#### **Why This Matters for Hong Kong Users**
+Contributions are welcome! Please feel free to submit a Pull Request.// Seamless integration flow:
+
+1. 🗺️ Google Maps → Find directions to nearest MTR/LRT stations  
+
+1. Fork the repository2. 🚇 HKMTRVUE App → Manual station selection (no GPS required) for real-time timetable view
+
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)3. ⏰ Traditional Timetable Design → Clear scheduled times and live arrival information
+
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)4. 🕐 Smart Timing → Combine walking time + wait time + travel time
+
+4. Push to the branch (`git push origin feature/AmazingFeature`)5. 📱 Browser-based → Direct handoff between Google Maps and HKMTRVUE web app
+
+5. Open a Pull Request```
+
+
+
+---#### **Why This Matters for Hong Kong Users**
+
 - **Density-Optimized**: Hong Kong has the world's highest concentration of MTR stations - this app helps navigate the complexity
-- **Transfer Intelligence**: Multi-line journeys are common in HK - smart transfer suggestions save time
+
+## 📝 License- **Transfer Intelligence**: Multi-line journeys are common in HK - smart transfer suggestions save time
+
 - **Rush Hour Optimization**: Real-time data crucial during Hong Kong's intense peak hours (7-9 AM, 6-8 PM)
-- **Tourist-Friendly**: Essential for visitors navigating Hong Kong's extensive transit network
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.- **Tourist-Friendly**: Essential for visitors navigating Hong Kong's extensive transit network
+
 - **Weather-Aware Planning**: Indoor connections mapped for Hong Kong's rainy season and summer heat
+
+---
 
 #### **Real-World Use Cases in Hong Kong**
 
+## 👤 Author
+
 **Scenario 1: Daily Commuter (Sha Tin → Central)**
-```
+
+**Hugo Li**```
+
 Morning Routine with HKMTRVUE:
-1. Check app at home → See East Rail delays/normal service
-2. Google Maps integration → Walking route to Sha Tin Station  
-3. Real-time platform info → Platform 1 or 2 for southbound trains
+
+- 📧 Email: s12332146@gmail.com1. Check app at home → See East Rail delays/normal service
+
+- 🐙 GitHub: [@HugoLi0213](https://github.com/HugoLi0213)2. Google Maps integration → Walking route to Sha Tin Station  
+
+- 🌐 Web: [hkmtrvue.vercel.app](https://hkmtrvue.vercel.app)3. Real-time platform info → Platform 1 or 2 for southbound trains
+
 4. Transfer optimization → Best route via Admiralty or direct to Central
-5. Arrival prediction → Exact ETA at Central for meeting planning
+
+---5. Arrival prediction → Exact ETA at Central for meeting planning
+
 ```
+
+## 🙏 Acknowledgments
 
 **Scenario 2: Tourist Journey (Airport → Tsim Sha Tsui)**
-```
-Visitor Experience:
-1. Land at Hong Kong Airport → Open HKMTRVUE web app (no download needed)
+
+- **DATA.GOV.HK** - For providing open data APIs```
+
+- **MTR Corporation** - For real-time train informationVisitor Experience:
+
+- **Hong Kong Government** - For supporting open data initiatives1. Land at Hong Kong Airport → Open HKMTRVUE web app (no download needed)
+
 2. Airport Express timing → Real-time departures every 10-15 minutes
-3. Kowloon Station arrival → Transfer guidance to Tsuen Wan Line
+
+---3. Kowloon Station arrival → Transfer guidance to Tsuen Wan Line
+
 4. Google Maps handoff → Walking directions in Tsim Sha Tsui
-5. Return journey planning → Bookmark favorite stations for later
+
+<div align="center">5. Return journey planning → Bookmark favorite stations for later
+
 ```
 
+**Made with ❤️ in Hong Kong**
+
 **Scenario 3: Light Rail User (Tuen Mun → Yuen Long)**
-```
+
+⭐ Star this repo if you find it useful!```
+
 New Territories Navigation:
-1. Complex LRT network → 12 different route numbers, multiple platforms
+
+</div>1. Complex LRT network → 12 different route numbers, multiple platforms
+
 2. Real-time platform display → Which route arrives first
 3. Transfer optimization → Direct route vs. faster connection
 4. Google Maps integration → Last-mile connection to final destination
