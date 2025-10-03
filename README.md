@@ -374,6 +374,26 @@ The app features a mobile-centered design similar to HKBUS.APP:
 📧 Email: s12332146@gmail.com  
 🐙 GitHub: [HugoLi0213](https://github.com/HugoLi0213)
 
+## 📚 Documentation
+
+For detailed documentation, please visit the [docs](./docs) folder:
+
+### 📱 Android & Deployment
+- [Android APK Build Guide](./docs/ANDROID_APK_BUILD_GUIDE.md) - Build Android APK step-by-step
+- [APK Installation Guide](./docs/APK_INSTALLATION_GUIDE.md) - Install on Android devices
+- [Android Release Notes](./docs/ANDROID_RELEASE_NOTES.md) - v1.0.0 release information
+
+### 🧠 Peak Hour Intelligence
+- [Peak Hour Quickstart](./docs/PEAK_HOUR_QUICKSTART.md) - Get started quickly
+- [Peak Hour Implementation](./docs/PEAK_HOUR_IMPLEMENTATION.md) - Technical details
+- [Peak Hour Visual Guide](./docs/PEAK_HOUR_VISUAL_GUIDE.md) - UI/UX documentation
+
+### ✨ Features & Testing
+- [Features Quick Summary](./docs/FEATURES_QUICK_SUMMARY.md) - All features overview
+- [Station Display Test Report](./docs/STATION_DISPLAY_TEST_REPORT.md) - Testing results
+
+**[📖 View Complete Documentation Index](./docs/README.md)**
+
 ## License
 
 This project is open source and available under the Apache License
