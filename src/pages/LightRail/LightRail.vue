@@ -440,13 +440,6 @@ const fetchStationData = async (stationId: string) => {
       // Store system_time for calculating exact arrival times
       if (data.system_time) {
         systemTime.value = data.system_time
-        console.log('LRT API system_time:', data.system_time)
-      }
-      
-      // Debug: Log the actual API response structure
-      console.log('LRT API Response:', JSON.stringify(data, null, 2))
-      if (data.platform_list[0] && data.platform_list[0].route_list && data.platform_list[0].route_list[0]) {
-        console.log('Sample route data:', data.platform_list[0].route_list[0])
       }
       
       // 自動選擇第一個月台
@@ -457,9 +450,15 @@ const fetchStationData = async (stationId: string) => {
       platformData.value = []
       error.value = '沒有可用的班次資料 No schedule data available'
     }
-  } catch (err) {
-    console.error('Error fetching LRT data:', err)
-    error.value = '載入失敗，請檢查網絡連接 Failed to load, please check network'
+  } catch (err: any) {
+    // Provide detailed error messages
+    if (!navigator.onLine) {
+      error.value = '網絡連接失敗，請檢查您的互聯網連接 Network error. Please check your internet connection.'
+    } else if (err.message?.includes('fetch')) {
+      error.value = '無法連接伺服器，政府數據伺服器暫時無法連接 Cannot connect to server. Government data server temporarily unavailable.'
+    } else {
+      error.value = '載入失敗，請檢查網絡連接或稍後再試 Failed to load. Please check network or try again later.'
+    }
     platformData.value = []
   } finally {
     loading.value = false

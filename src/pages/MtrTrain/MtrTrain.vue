@@ -19,35 +19,81 @@
           </button>
         </div>
       </div>
-      <div v-if="error" class="error">{{ error }}</div>
-      <div class="direction-toggle">
-        <button :class="{ active: direction === 'UP' }" @click="direction = 'UP'">{{ getTerminusNames.up }}</button>
-        <button :class="{ active: direction === 'DOWN' }" @click="direction = 'DOWN'">{{ getTerminusNames.down }}</button>
+      
+      <!-- Peak Hour Indicator -->
+      <PeakHourIndicator 
+        v-if="!error && !loading"
+        :lineCode="selectedLine"
+        :showStats="true"
+      />
+      
+      <!-- Error State -->
+      <div v-if="error" class="error">
+        <div class="error-icon">⚠️</div>
+        <div class="error-content">
+          <div class="error-title">{{ error.title }}</div>
+          <div class="error-message">{{ error.message }}</div>
+        </div>
+        <button class="retry-btn" @click="fetchTrainData">
+          <span class="retry-icon">🔄</span>
+          <span>重試 Retry</span>
+        </button>
       </div>
-      <div class="mtr-table-wrapper">
-        <table class="mtr-table">
-          <thead>
-            <tr>
-              <th>班次</th>
-              <th>1</th>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="([stationCode, stationName]) in stationRows" :key="stationCode">
-              <td class="station-name">{{ stationName[lang] }} ({{ stationCode }})</td>
-              <td v-for="i in 4" :key="i">
-                <template v-if="getEta(stationCode, i-1)">
-                  <div class="eta-time">{{ formatTime(getEta(stationCode, i-1)?.time || '') }}</div>
-                  <div class="eta-dest">({{ getDestName(getEta(stationCode, i-1)?.dest || '') }})</div>
-                </template>
-                <template v-else>-</template>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- Empty State (No Data) -->
+      <div v-else-if="!loading && Object.keys(trainData).length === 0" class="empty-state">
+        <div class="empty-icon">🚆</div>
+        <h3 class="empty-title">沒有可用的班次資訊</h3>
+        <p class="empty-message">No train schedule available</p>
+        <button class="reload-btn" @click="fetchTrainData">
+          <span class="reload-icon">⟳</span>
+          <span>重新載入 Reload</span>
+        </button>
+      </div>
+
+      <!-- Normal State: Direction Toggle and Table -->
+      <div v-else>
+        <div class="direction-toggle">
+          <button :class="{ active: direction === 'UP' }" @click="direction = 'UP'">{{ getTerminusNames.up }}</button>
+          <button :class="{ active: direction === 'DOWN' }" @click="direction = 'DOWN'">{{ getTerminusNames.down }}</button>
+        </div>
+        
+        <div class="mtr-table-wrapper">
+          <table class="mtr-table">
+            <thead>
+              <tr>
+                <th>班次</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Loading Skeleton -->
+              <tr v-if="loading && Object.keys(trainData).length === 0" v-for="n in 12" :key="`skeleton-${n}`">
+                <td class="station-name">
+                  <div class="skeleton skeleton-line"></div>
+                </td>
+                <td v-for="i in 4" :key="i">
+                  <div class="skeleton skeleton-box"></div>
+                </td>
+              </tr>
+              
+              <!-- Actual Data -->
+              <tr v-else v-for="([stationCode, stationName]) in stationRows" :key="stationCode">
+                <td class="station-name">{{ stationName[lang] }} ({{ stationCode }})</td>
+                <td v-for="i in 4" :key="i">
+                  <template v-if="getEta(stationCode, i-1)">
+                    <div class="eta-time">{{ formatTime(getEta(stationCode, i-1)?.time || '') }}</div>
+                    <div class="eta-dest">({{ getDestName(getEta(stationCode, i-1)?.dest || '') }})</div>
+                  </template>
+                  <template v-else>-</template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
         <!-- Mini Settings Button -->
       <div class="mini-settings">
@@ -92,6 +138,8 @@ import { computed, onMounted, ref } from 'vue';
 import { useTheme } from '../../composables/useTheme';
 import { MTR_LINES } from '../../constants/mtrLines';
 import type { Direction, Language, LineConfig, MtrLineCode, StationConfig, StationData, TrainArrival } from '../../types/train';
+import PeakHourIndicator from '../../components/PeakHourIndicator.vue';
+import { frequencyAnalyzer } from '../../utils/trainFrequencyAnalyzer';
 
 // Initialize theme system
 const { isDarkMode, setThemeMode } = useTheme();
@@ -101,7 +149,7 @@ const selectedLine = ref<MtrLineCode>('TML');
 const trainData = ref<Record<string, StationData>>({});
 const currentTime = ref('');
 const loading = ref(false);
-const error = ref('');
+const error = ref<{ title: string; message: string } | null>(null);
 const lastUpdate = ref<Date|null>(null);
 const direction = ref<Direction>('UP');
 
@@ -145,7 +193,7 @@ const formatTime = (time: string) => time ? time.replace(/^[0-9-]* /, '').replac
 
 const fetchTrainData = async () => {
   loading.value = true;
-  error.value = '';
+  error.value = null;
   try {
     const stations = Object.keys(lineConfig.value.stations);
     const promises = stations.map(station =>
@@ -168,8 +216,42 @@ const fetchTrainData = async () => {
     trainData.value = newTrainData;
     currentTime.value = currentTimeFromApi;
     lastUpdate.value = new Date();
-  } catch (e) {
-    error.value = '無法載入港鐵數據';
+    
+    // Record train frequency for peak hour analysis
+    Object.keys(newTrainData).forEach(stationCode => {
+      const upTrains = newTrainData[stationCode]?.UP || [];
+      const downTrains = newTrainData[stationCode]?.DOWN || [];
+      
+      if (upTrains.length > 0) {
+        frequencyAnalyzer.recordFrequency(stationCode, selectedLine.value, 'UP', [...upTrains]);
+      }
+      if (downTrains.length > 0) {
+        frequencyAnalyzer.recordFrequency(stationCode, selectedLine.value, 'DOWN', [...downTrains]);
+      }
+    });
+  } catch (e: any) {
+    // Provide detailed, bilingual error messages
+    if (!navigator.onLine) {
+      error.value = {
+        title: '網絡連接失敗 Network Error',
+        message: '請檢查您的互聯網連接 Please check your internet connection'
+      };
+    } else if (e.message?.includes('fetch') || e.message?.includes('Failed to fetch')) {
+      error.value = {
+        title: '無法連接伺服器 Cannot Connect to Server',
+        message: '政府數據伺服器暫時無法連接，請稍後再試 Government data server temporarily unavailable'
+      };
+    } else if (e.status === 404) {
+      error.value = {
+        title: '找不到資料 Data Not Found',
+        message: '車站代碼可能有誤 Station code may be incorrect'
+      };
+    } else {
+      error.value = {
+        title: '載入失敗 Loading Failed',
+        message: '無法載入港鐵數據，請重試 Unable to load MTR data, please retry'
+      };
+    }
   } finally {
     loading.value = false;
   }
@@ -206,7 +288,19 @@ const getEta = (stationCode: string, idx: number): TrainArrival | undefined => {
 };
 
 const getDestName = (dest: string) => {
-  return (lineConfig.value.stations as Record<string, StationConfig>)[dest]?.[lang.value] || dest;
+  // First try current line's stations
+  const currentLineStation = (lineConfig.value.stations as Record<string, StationConfig>)[dest]?.[lang.value];
+  if (currentLineStation) return currentLineStation;
+  
+  // If not found, search all MTR lines for this station code
+  for (const lineCode of Object.keys(MTR_LINES)) {
+    const line = (MTR_LINES as Record<string, LineConfig>)[lineCode];
+    const stationName = (line.stations as Record<string, StationConfig>)[dest]?.[lang.value];
+    if (stationName) return stationName;
+  }
+  
+  // If still not found, return the code itself
+  return dest;
 };
 
 // Auto-fetch data on mount
@@ -412,15 +506,175 @@ onMounted(() => {
   font-weight: 500;
 }
 
+/* Error State Styles */
 .error {
-  color: var(--color-error, #dc3545);
-  text-align: center;
-  margin: 16px 20px;
-  font-weight: 500;
-  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 20px;
+  padding: 24px;
   background: rgba(248, 215, 218, 0.3);
+  border: 2px solid rgba(220, 53, 69, 0.3);
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-icon {
+  font-size: 3rem;
+  animation: shake 0.5s ease;
+}
+
+.error-content {
+  text-align: center;
+}
+
+.error-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-error, #dc3545);
+  margin-bottom: 8px;
+}
+
+.error-message {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary, #6c757d);
+  line-height: 1.5;
+}
+
+.retry-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--color-error, #dc3545);
+  color: white;
+  border: none;
   border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.retry-icon {
+  font-size: 1.2rem;
+}
+
+/* Empty State Styles */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  margin: 20px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.empty-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text, #343a40);
+  margin: 0 0 8px 0;
+}
+
+.empty-message {
+  font-size: 1rem;
+  color: var(--color-text-secondary, #6c757d);
+  margin: 0 0 24px 0;
+}
+
+.reload-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.reload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.reload-icon {
+  font-size: 1.3rem;
+}
+
+/* Loading Skeleton Styles */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.skeleton-line {
+  height: 16px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.skeleton-box {
+  height: 40px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Dark mode skeleton */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
 }
 
 .mtr-settings {
@@ -838,9 +1092,32 @@ onMounted(() => {
 }
 
 [data-theme="dark"] .error {
-  color: var(--color-error);
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+[data-theme="dark"] .error-title {
+  color: #ff6b6b;
+}
+
+[data-theme="dark"] .retry-btn {
+  background: #c82333;
+}
+
+[data-theme="dark"] .retry-btn:hover {
+  background: #bd2130;
+}
+
+[data-theme="dark"] .empty-state {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .empty-title {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .reload-btn {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #5a6fd8 100%);
 }
 
 [data-theme="dark"] .mini-settings-btn {

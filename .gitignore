@@ -9,3 +9,20 @@ pages/
 *.log
 .DS_Store
 .vercel
+
+# Android / Capacitor
+android/app/build/
+android/app/.cxx/
+android/.gradle/
+android/local.properties
+android/.idea/
+android/*.iml
+*.apk
+*.aab
+
+# Java / Oracle JDK
+oracleJdk-25/
+
+# Capacitor
+capacitor.config.json
+.capacitor/

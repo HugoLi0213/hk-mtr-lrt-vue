@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HKMTRVUE</string>
+    <string name="title_activity_main">HKMTRVUE</string>
+    <string name="package_name">com.hkmtrvue.app</string>
+    <string name="custom_url_scheme">com.hkmtrvue.app</string>
+</resources>
