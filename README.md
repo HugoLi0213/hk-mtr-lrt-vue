@@ -12,7 +12,9 @@ HKMTRVUE shows live (on‑request) train and Light Rail arrivals from official o
 
 * MTR line selection (Airport Express, Tung Chung, Tseung Kwan O, Tuen Ma, East Rail, South Island, Tsuen Wan, Island, Kwun Tong, etc.)
 * Light Rail: region → station → platform drill‑down with upcoming routes and basic route info window
-* Manual refresh of arrivals (no background polling interval is active; data fetched when you load or press refresh)
+* Refresh logic:
+  * Light Rail view: automatic 10‑second interval refresh when a station is selected
+  * MTR heavy rail view: manual refresh button (single fetch per user action)
 * Direction toggle (UP / DOWN) for heavy rail lines with dynamic station ordering
 * Platform & destination display (where provided by source feeds)
 * Bilingual Traditional Chinese + English labels (line names, station names)
@@ -24,7 +26,7 @@ HKMTRVUE shows live (on‑request) train and Light Rail arrivals from official o
 
 ## Not Yet Implemented (Present in codebase but inactive or stubbed)
 
-* Auto periodic refresh (only manual at present)
+* Auto periodic refresh for MTR page (currently only Light Rail auto‑refreshes)
 * Bookmark / favorites management (some composables & components exist but not integrated in the active UI)
 
 ## Tech Stack
