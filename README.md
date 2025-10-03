@@ -374,25 +374,43 @@ The app features a mobile-centered design similar to HKBUS.APP:
 📧 Email: s12332146@gmail.com  
 🐙 GitHub: [HugoLi0213](https://github.com/HugoLi0213)
 
-## 📚 Documentation
+## 📚 Documentation & Scripts
 
+### 📖 Documentation
 For detailed documentation, please visit the [docs](./docs) folder:
 
-### 📱 Android & Deployment
-- [Android APK Build Guide](./docs/ANDROID_APK_BUILD_GUIDE.md) - Build Android APK step-by-step
-- [APK Installation Guide](./docs/APK_INSTALLATION_GUIDE.md) - Install on Android devices
-- [Android Release Notes](./docs/ANDROID_RELEASE_NOTES.md) - v1.0.0 release information
+**Quick Links:**
+- 📱 [Android APK Build Guide](./docs/ANDROID_APK_BUILD_GUIDE.md) - Build Android APK
+- 📲 [APK Installation Guide](./docs/APK_INSTALLATION_GUIDE.md) - Install on devices
+- 🧠 [Peak Hour Quickstart](./docs/PEAK_HOUR_QUICKSTART.md) - Get started with AI predictions
+- ✨ [Features Summary](./docs/FEATURES_QUICK_SUMMARY.md) - All features overview
+- 🧪 [Test Report](./docs/STATION_DISPLAY_TEST_REPORT.md) - 74+ tests, 100% pass rate
 
-### 🧠 Peak Hour Intelligence
-- [Peak Hour Quickstart](./docs/PEAK_HOUR_QUICKSTART.md) - Get started quickly
-- [Peak Hour Implementation](./docs/PEAK_HOUR_IMPLEMENTATION.md) - Technical details
-- [Peak Hour Visual Guide](./docs/PEAK_HOUR_VISUAL_GUIDE.md) - UI/UX documentation
+**[📖 View Complete Documentation Index →](./docs/README.md)**
 
-### ✨ Features & Testing
-- [Features Quick Summary](./docs/FEATURES_QUICK_SUMMARY.md) - All features overview
-- [Station Display Test Report](./docs/STATION_DISPLAY_TEST_REPORT.md) - Testing results
+### 🛠️ Build & Automation Scripts
+All build and deployment scripts are in the [scripts](./scripts) folder:
 
-**[📖 View Complete Documentation Index](./docs/README.md)**
+**Quick Commands:**
+```bash
+# Build Android APK
+cd scripts
+build-apk.cmd
+
+# Check build status
+check-apk-status.cmd
+
+# Run tests
+run-all-tests.cmd
+
+# Deploy to production
+deploy.cmd
+```
+
+**[🛠️ View All Scripts →](./scripts/README.md)**
+
+### 📁 Project Structure
+For complete project organization, see [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)
 
 ## License
 

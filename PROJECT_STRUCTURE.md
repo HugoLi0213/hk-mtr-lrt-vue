@@ -1,0 +1,386 @@
+# 📁 HKMTRVUE Project Structure
+
+Clean and organized project structure for easy navigation and maintenance.
+
+---
+
+## 📂 Root Directory Structure
+
+```
+hkmtrvue-1/
+├── 📱 android/              # Native Android project (Capacitor)
+├── 📦 dist/                 # Production build output (generated)
+├── 📚 docs/                 # All project documentation
+├── 🌍 public/               # Static public assets
+├── 🛠️ scripts/              # Build and automation scripts
+├── 💻 src/                  # Vue.js source code
+├── 📄 Configuration Files   # Root-level config files
+└── 🧪 Test Files           # Testing utilities
+```
+
+---
+
+## 📚 Documentation (`docs/`)
+
+**All markdown documentation organized by category**
+
+```
+docs/
+├── README.md                              # Documentation index
+│
+├── 📱 Android & Deployment (6 files)
+│   ├── ANDROID_APK_BUILD_GUIDE.md        # How to build APK
+│   ├── APK_INSTALLATION_GUIDE.md         # Install on devices
+│   ├── ANDROID_RELEASE_NOTES.md          # v1.0.0 release info
+│   ├── GITHUB_RELEASE_NOTES.md           # Release template
+│   ├── DEPLOYMENT_CHECKLIST.md           # Pre-deploy checks
+│   └── DEPLOYMENT_COMPLETE.md            # Deployment summary
+│
+├── 🧠 Peak Hour System (4 files)
+│   ├── PEAK_HOUR_IMPLEMENTATION.md       # Technical details
+│   ├── PEAK_HOUR_DATA_GUIDE.md           # Data structures
+│   ├── PEAK_HOUR_QUICKSTART.md           # Quick start guide
+│   └── PEAK_HOUR_VISUAL_GUIDE.md         # UI/UX design
+│
+├── 🧪 Testing & QA (4 files)
+│   ├── STATION_DISPLAY_TEST_REPORT.md    # Test results (74+ tests)
+│   ├── TEST_SUMMARY.md                   # Testing statistics
+│   ├── BUG_REPORT.md                     # Known issues
+│   └── FIXES_COMPLETED.md                # Resolved bugs
+│
+├── ✨ Features (4 files)
+│   ├── FEATURES_QUICK_SUMMARY.md         # All features
+│   ├── FEATURE_COMPARISON.md             # Competitor analysis
+│   ├── UNIQUE_FEATURES.md                # What's special
+│   └── COMPETITIVE_ADVANTAGES.md         # Why choose us
+│
+└── 📊 Project Reports (3 files)
+    ├── IMPLEMENTATION_REPORT.md          # Implementation summary
+    ├── SEO_STRATEGY.md                   # SEO planning
+    └── SEO_ASSETS_GUIDE.md               # SEO resources
+```
+
+**Total:** 22 documentation files (21 + index)
+
+---
+
+## 🛠️ Scripts (`scripts/`)
+
+**All automation scripts for building, testing, and deployment**
+
+```
+scripts/
+├── README.md                    # Scripts documentation
+│
+├── 📱 Android Build
+│   ├── build-apk.cmd           # Complete APK build pipeline
+│   └── check-apk-status.cmd    # Build status checker
+│
+├── 🧪 Testing
+│   ├── run-all-tests.cmd       # Run test suite
+│   └── validate-implementation.cmd  # Code validation
+│
+└── 🚀 Deployment
+    ├── deploy.cmd              # Production deployment (Windows)
+    └── deploy-test.sh          # Test deployment (Unix/Linux)
+```
+
+**Total:** 6 script files + documentation
+
+---
+
+## 💻 Source Code (`src/`)
+
+**Vue.js application source code**
+
+```
+src/
+├── App.vue                      # Main app component
+├── main.ts                      # Entry point
+│
+├── 📄 pages/                    # Page components
+│   ├── Home/
+│   ├── MtrTrain/               # MTR train schedules
+│   ├── LightRail/              # Light Rail transit
+│   ├── BusEta/                 # Bus ETA (future)
+│   └── Settings.vue
+│
+├── 🎨 components/              # Reusable UI components
+│   ├── settings/
+│   ├── icons/
+│   ├── route-board/
+│   ├── route-eta/
+│   ├── route-search/
+│   └── bookmarked-stop/
+│
+├── 🔧 composables/             # Vue 3 composables
+│   ├── useMtrData.ts           # MTR API data fetching
+│   ├── useFavoriteStations.ts  # Bookmark management
+│   ├── useTheme.ts             # Theme handling
+│   └── useNetworkStatus.ts     # Network monitoring
+│
+├── 🎯 constants/               # Static data
+│   └── mtrLines.ts             # MTR line configurations
+│
+├── 📊 types/                   # TypeScript types
+│   └── train.ts                # Type definitions
+│
+└── 🛠️ utils/                   # Utility functions
+    ├── index.ts                # General utilities
+    ├── trainFrequencyAnalyzer.ts   # Historical analysis
+    ├── peakHourIndicator.ts        # Peak hour prediction
+    └── tests/
+        └── searchRouteHelpers.ts
+```
+
+---
+
+## 📱 Android (`android/`)
+
+**Native Android project generated by Capacitor**
+
+```
+android/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/              # Java source
+│   │   │   ├── res/               # Resources (icons, etc)
+│   │   │   └── AndroidManifest.xml
+│   │   ├── androidTest/           # Android tests
+│   │   └── test/                  # Unit tests
+│   ├── build.gradle               # App build config
+│   └── capacitor.build.gradle     # Capacitor config
+│
+├── gradle/                        # Gradle wrapper
+├── build.gradle                   # Project build config
+└── settings.gradle                # Project settings
+```
+
+**Note:** Build output (`build/` folders) excluded via `.gitignore`
+
+---
+
+## 🌍 Public Assets (`public/`)
+
+**Static files served directly**
+
+```
+public/
+├── analytics.html               # Analytics tracking
+├── analytics-bilingual.html     # Bilingual version
+├── blog-content.md              # Blog content
+├── blog-content-bilingual.md    # Bilingual blog
+├── robots.txt                   # SEO robots file
+├── sitemap.xml                  # SEO sitemap
+└── site.webmanifest            # PWA manifest
+```
+
+---
+
+## 📦 Build Output (`dist/`)
+
+**Generated production build (not in git)**
+
+```
+dist/
+├── index.html                   # Main HTML
+├── assets/                      # Bundled JS/CSS
+│   ├── index-[hash].js         # JavaScript bundle
+│   └── index-[hash].css        # CSS bundle
+└── [public files copied here]
+```
+
+**Auto-generated by:** `npm run build`
+
+---
+
+## 📄 Configuration Files (Root)
+
+### **Core Configuration**
+- `package.json` - Node.js dependencies and scripts
+- `package-lock.json` - Dependency lock file
+- `tsconfig.json` - TypeScript configuration
+- `tsconfig.node.json` - Node.js TypeScript config
+- `vite.config.ts` - Vite build configuration
+
+### **Capacitor/Android**
+- `capacitor.config.ts` - Capacitor configuration
+
+### **Deployment**
+- `vercel.json` - Vercel deployment config
+
+### **Other**
+- `index.html` - Main HTML entry point
+- `LICENSE` - Apache License 2.0
+- `NOTICE` - Legal notices
+- `README.md` - Project overview
+- `.npmrc` - npm configuration
+- `.nvmrc` - Node version specification
+- `.gitignore` - Git ignore rules
+
+---
+
+## 🧪 Test Files (Root)
+
+**Simple test utilities for quick validation**
+
+```
+simple-test.js                  # Basic testing
+test-platform-destinations.js   # Platform tests
+test-theme.js                   # Theme tests
+test-time-format.js            # Time format tests
+validation-test.html           # Validation page
+platform-destinations-demo.html # Demo page
+```
+
+---
+
+## 🗂️ Excluded from Git
+
+**Files/folders in `.gitignore`:**
+
+```
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Android build artifacts
+android/app/build/
+android/.gradle/
+android/local.properties
+*.apk
+*.aab
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Other
+oracleJdk-25/
+.vercel/
+```
+
+---
+
+## 📊 Project Statistics
+
+### **File Count by Category**
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| 📚 Documentation | 22 | Markdown files in `docs/` |
+| 🛠️ Scripts | 7 | Automation scripts in `scripts/` |
+| 💻 Source Code | 50+ | Vue/TypeScript files in `src/` |
+| 📱 Android | 70+ | Native Android project files |
+| 🌍 Public Assets | 7 | Static public files |
+| ⚙️ Config Files | 10+ | Root configuration files |
+| 🧪 Test Files | 6 | Testing utilities |
+
+### **Total Lines of Code**
+
+| Type | Approx. Lines |
+|------|---------------|
+| TypeScript/Vue | ~5,000 |
+| Documentation | ~15,000 |
+| Android/Java | ~1,000 |
+| Config/JSON | ~500 |
+
+---
+
+## 🎯 Quick Navigation
+
+### **For Users**
+1. **Get Started:** [README.md](../README.md)
+2. **Install App:** [docs/APK_INSTALLATION_GUIDE.md](../docs/APK_INSTALLATION_GUIDE.md)
+3. **Features:** [docs/FEATURES_QUICK_SUMMARY.md](../docs/FEATURES_QUICK_SUMMARY.md)
+
+### **For Developers**
+1. **Build APK:** [scripts/build-apk.cmd](../scripts/build-apk.cmd)
+2. **Source Code:** [src/](../src/)
+3. **API Docs:** [docs/PEAK_HOUR_IMPLEMENTATION.md](../docs/PEAK_HOUR_IMPLEMENTATION.md)
+
+### **For Contributors**
+1. **Scripts:** [scripts/README.md](../scripts/README.md)
+2. **Docs:** [docs/README.md](../docs/README.md)
+3. **Tests:** [docs/STATION_DISPLAY_TEST_REPORT.md](../docs/STATION_DISPLAY_TEST_REPORT.md)
+
+---
+
+## 🏗️ Development Workflow
+
+### **Typical Development Session**
+
+```bash
+# 1. Start development server
+npm run dev
+
+# 2. Make changes in src/
+
+# 3. Test changes
+cd scripts
+validate-implementation.cmd
+
+# 4. Build for production
+npm run build
+
+# 5. Build Android APK (optional)
+cd scripts
+build-apk.cmd
+```
+
+---
+
+## 🔄 Maintenance Tips
+
+### **Keep It Clean**
+- ✅ Documentation goes in `docs/`
+- ✅ Scripts go in `scripts/`
+- ✅ Source code stays in `src/`
+- ✅ No loose files in root (except config)
+
+### **Before Committing**
+1. Run validation: `scripts/validate-implementation.cmd`
+2. Check build: `npm run build`
+3. Update docs if needed
+4. Review `.gitignore` for new files
+
+### **Periodic Cleanup**
+```bash
+# Clean build artifacts
+rm -rf dist android/app/build
+
+# Clean dependencies (if needed)
+rm -rf node_modules
+npm install
+
+# Clean Git history (if needed)
+git clean -fdx
+```
+
+---
+
+## 📝 Version
+
+**Project Structure Version:** 2.0  
+**Last Updated:** October 3, 2025  
+**Changes:** Organized all docs and scripts into dedicated folders
+
+---
+
+**This structure is designed for:**
+- 🎯 Easy navigation
+- 📚 Clear documentation
+- 🛠️ Efficient development
+- 🚀 Simple deployment
+
+**Need help navigating?** Check the [main README](../README.md) or [documentation index](../docs/README.md).
