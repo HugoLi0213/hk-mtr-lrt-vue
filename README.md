@@ -1,403 +1,151 @@
-# HKMTRVUE# HKMTRVUE<div align="center"><div align="center"><div align="center">
+# HKMTRVUE
 
+Hong Kong MTR & Light Rail (LRT) arrival viewer built with Vue 3 + TypeScript + Vite and packaged for Android with Capacitor.
 
+> Clean rewrite of the README to reflect the current repository state (android branch). Claims below only describe features that actually exist in the code right now.
 
-Hong Kong MTR & Light Rail Real-Time Tracker
+## Overview
 
+HKMTRVUE shows live (on‑request) train and Light Rail arrivals from official open data endpoints. It provides a lightweight mobile‑like interface (max width ~480px) that works in the browser and can be bundled as an Android app.
 
+## Features (Implemented)
 
----Hong Kong MTR & Light Rail Real-Time Tracker
+* MTR line selection (Airport Express, Tung Chung, Tseung Kwan O, Tuen Ma, East Rail, South Island, Tsuen Wan, Island, Kwun Tong, etc.)
+* Light Rail: region → station → platform drill‑down with upcoming routes and basic route info window
+* Manual refresh of arrivals (no background polling interval is active; data fetched when you load or press refresh)
+* Direction toggle (UP / DOWN) for heavy rail lines with dynamic station ordering
+* Platform & destination display (where provided by source feeds)
+* Bilingual Traditional Chinese + English labels (line names, station names)
+* Simple hash based navigation (/#/ for MTR, #/light-rail for LRT) without Vue Router
+* Theme switching (Light / Dark) with persistent CSS custom properties
+* Peak hour indicator / frequency analysis groundwork (frequency analyzer + indicator placeholder)
+* Basic SEO meta tag updates (title / description / keywords / Open Graph / Twitter) based on active view
+* Lightweight build (no large UI frameworks; only Vue core)
 
+## Not Yet Implemented (Present in codebase but inactive or stubbed)
 
-
-## About
-
-
-
-HKMTRVUE is a real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - updated every 10 seconds from official DATA.GOV.HK sources.Track Hong Kong trains in real-time with live arrival information.# 🚇 HKMTRVUE
-
-
-
-**Key Features:**
-
-- Real-time arrivals updated every 10 seconds
-
-- All MTR lines and Light Rail routes---
-
-- Dark & Light mode themes
-
-- Bilingual (English & 繁體中文)
-
-- Cross-platform (Android & Web)
-
-## What is HKMTRVUE?### Hong Kong MTR & Light Rail Real-Time Tracker# 🚇 HKMTRVUE# 🚇 HKMTRVUE
-
----
-
-
-
-## Download
-
-HKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.
-
-**Android APK:** Available in project releases (1.9 MB)  
-
-**Web App:** https://hkmtrvue.vercel.app
-
-
-
----### Key Features[![Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/HugoLi0213/hkmtrvue/releases)
-
-
-
-## MTR Lines
-
-
-
-All major lines supported:- Real-Time Tracking - Live arrivals updated every 10 seconds[![Web App](https://img.shields.io/badge/Launch-Web%20App-blue?style=for-the-badge&logo=google-chrome)](https://hkmtrvue.vercel.app)
-
-- Island Line | Tsuen Wan Line | Kwun Tong Line
-
-- Tseung Kwan O Line | Tuen Ma Line | East Rail Line- Beautiful Interface - Clean design with dark/light themes
-
-- South Island Line | Airport Express | Tung Chung Line
-
-- Fast & Efficient - Minimal data usage, smart caching[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)### Hong Kong MTR & Light Rail Real-Time Tracker### Hong Kong MTR & Light Rail Real-Time Tracker
-
----
-
-- Bilingual Support - English & Traditional Chinese
-
-## Light Rail
-
-- Cross-Platform - Android app & web version
-
-Complete LRT coverage:
-
-- Tuen Mun & Yuen Long districts
-
-- All 12 routes (505, 507, 610, 614, 615, etc.)
-
-- 68 stations---**Track Hong Kong trains in real-time with live arrival information**
-
-
-
----
-
-
-
-## Features## Download
-
-
-
-**Real-Time Data**
-
-- 10-second auto-refresh
-
-- Platform information### Android App[Download](#-download) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Development](#-development)[![Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/HugoLi0213/hkmtrvue/releases)[![Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/HugoLi0213/hkmtrvue/releases)
-
-- Traditional timetable view
-
-- Smart caching
-
-
-
-**User Experience****APK Size:** 1.9 MB  
-
-- Dark & Light themes
-
-- Instant loading**Supports:** Android 5.0+
-
-- Minimal data usage
-
-- Station search by region---[![Web App](https://img.shields.io/badge/Launch-Web%20App-blue?style=for-the-badge&logo=google-chrome)](https://hkmtrvue.vercel.app)[![Web App](https://img.shields.io/badge/Launch-Web%20App-blue?style=for-the-badge&logo=google-chrome)](https://hkmtrvue.vercel.app)
-
-
-
----Download from: [GitHub Releases](https://github.com/HugoLi0213/hkmtrvue/releases)
-
-
+* Auto periodic refresh (only manual at present)
+* Bookmark / favorites management (some composables & components exist but not integrated in the active UI)
 
 ## Tech Stack
 
+| Layer | Tools |
+|-------|-------|
+| UI Framework | Vue 3 (script setup), TypeScript |
+| Build | Vite |
+| Mobile Wrapper | Capacitor (Android project under `android/`) |
+| Data Sources | Hong Kong Government DATA.GOV.HK real‑time MTR & Light Rail endpoints |
+| Deployment (Web) | Vercel (see `vercel.json`) |
+| Optimization (Android) | ProGuard + resource shrinking + ABI splits (armeabi-v7a, arm64-v8a, x86, x86_64, plus universal) |
 
+## Data Sources
 
-**Frontend:** Vue 3, TypeScript, Vite  - Universal - works on all devices
+Public transport real‑time data consumed from: https://data.gov.hk (MTR schedule endpoints). All data belongs to their respective providers; this project only displays it.
 
-**Mobile:** Capacitor, Android SDK  
+## Project Structure (Simplified)
 
-**APIs:** DATA.GOV.HK, MTR Corporation  - Optimized size (40% smaller)![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=flat&logo=vue.js&logoColor=4FC08D)[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+```
+root
+├─ public/                Static assets / meta / manifest / sitemap
+├─ src/
+│  ├─ App.vue             Root application container (hash navigation + meta updates)
+│  ├─ main.ts             Bootstraps Vue + Vercel analytics
+│  ├─ pages/
+│  │  ├─ MtrTrain/        Heavy rail arrivals UI
+│  │  └─ LightRail/       Light Rail region/station/platform UI (large single file)
+│  ├─ components/         Reusable smaller view components (route board, inputs, icons, etc.)
+│  ├─ composables/        Theme & data helper composables
+│  ├─ constants/          MTR line configuration (`mtrLines.ts`)
+│  ├─ types/              TypeScript domain types
+│  └─ utils/              Utility helpers (e.g. frequency analyzer)
+└─ android/               Capacitor Android project (Gradle config, manifests, proguard)
+```
 
-**Hosting:** Vercel
+## Getting Started (Web)
 
-- No Google Play required
-
----
-
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-
-## Development
-
-### Web App
-
-### Setup
-
-![Android](https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white)
+Prerequisites: Node.js 18+ (recommended), npm.
 
 ```bash
-
-git clone https://github.com/HugoLi0213/hkmtrvue.git**No Installation Required**  
-
-cd hkmtrvue
-
-npm install**Works on:** Any browser![Capacitor](https://img.shields.io/badge/Capacitor-119EFF?style=flat&logo=capacitor&logoColor=white)
-
-npm run dev
-
-```
-
-
-
-### BuildVisit: [hkmtrvue.vercel.app](https://hkmtrvue.vercel.app)**Track Hong Kong trains in real-time with live arrival information****Track Hong Kong trains in real-time with live arrival information**
-
-
-
-```bash
-
-npm run build
-
-```- Instant access</div>
-
-
-
-### Android- Always up-to-date
-
-
-
-```bash- Mobile & desktop friendly
-
-npm run build
-
-npx cap sync android
-
-cd android
-
-./gradlew assembleRelease------
-
-```
-
-
-
----
-
-## Features[Download](#-download) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Development](#-development)[Features](#-features) • [Download](#-download) • [Tech Stack](#-tech-stack) • [Development](#-development)
-
-## Project Structure
-
-
-
-```
-
-src/### MTR Lines Coverage## 📱 What is HKMTRVUE?
-
-├── pages/       # MTR, LRT, Home pages
-
-├── components/  # Reusable UI components
-
-├── composables/ # Vue composables
-
-├── constants/   # MTR line configsAll major lines supported including:
-
-├── types/       # TypeScript types
-
-└── utils/       # Helper functions- Island Line | Tsuen Wan Line | Kwun Tong Line
-
-```
-
-- Tseung Kwan O Line | Tuen Ma Line | East Rail LineHKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.
-
----
-
-- South Island Line | Airport Express | Tung Chung Line
-
-## Performance
-
-------
-
-- APK Size: 1.9 MB (40% smaller)
-
-- Load Time: < 2 seconds on 4G### Light Rail Transit
-
-- Data Usage: ~50 KB per minute
-
-- Supports: All Android devices (5.0+)### ✨ Key Highlights
-
-
-
----- Complete LRT network in Tuen Mun & Yuen Long
-
-
-
-## License- All 12 routes supported (505, 507, 610, 614, 615, etc.)
-
-
-
-MIT License - see LICENSE file- 68 stations covered
-
-
-
----- 🚆 **Real-Time Tracking** - Live arrivals updated every 10 seconds
-
-
-
-## Author### Core Features
-
-
-
-**Hugo Li**  - 🎨 **Beautiful Interface** - Clean design with dark/light themes<img src="https://img.shields.io/badge/Vue.js-35495E?style=flat&logo=vue.js&logoColor=4FC08D" alt="Vue.js"></div>
-
-GitHub: [@HugoLi0213](https://github.com/HugoLi0213)  
-
-Web: https://hkmtrvue.vercel.app- 10-Second Auto-Refresh - Fastest real-time data updates
-
-
-
----- Timetable View - Traditional schedule display- ⚡ **Fast & Efficient** - Minimal data usage, smart caching
-
-
-
-## Acknowledgments- Dark & Light Mode - Comfortable viewing anytime
-
-
-
-- DATA.GOV.HK - Open data APIs- Smart Caching - Saves your mobile data- 🌏 **Bilingual Support** - English & Traditional Chinese<img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
-
-- MTR Corporation - Real-time information
-
-- Hong Kong Government - Open data initiative- Line Selection - Easy switching between MTR lines
-
-
-
----- Platform Information - Know which platform to go to- 📱 **Cross-Platform** - Android app & web version
-
-
-
-Made with ❤️ in Hong Kong- Station Search - Find stations quickly by region
-
-
-- Instant Loading - Optimized performance<img src="https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white" alt="Android">## 📱 What is HKMTRVUE?
-
-
-
-------
-
-
-
-## Tech Stack<img src="https://img.shields.io/badge/Capacitor-119EFF?style=flat&logo=capacitor&logoColor=white" alt="Capacitor">
-
-
-
-### Frontend## 📥 Download
-
-- Vue 3 - Progressive JavaScript framework
-
-- TypeScript - Type-safe developmentHKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.
-
-- Vite - Lightning-fast build tool
-
-- Capacitor - Cross-platform native runtime<table>
-
-
-
-### Backend & APIs<tr></div>
-
-- DATA.GOV.HK - Official Hong Kong government data
-
-- MTR API - Real-time train information<td align="center" width="50%">
-
-- Vercel - Web hosting & deployment
-
-### ✨ Key Features
-
-### Mobile
-
-- Android SDK - Native Android support### 📱 Android App
-
-- Gradle - Build automation
-
-- ProGuard - Code optimization & minification---
-
-
-
----**APK Size:** 1.9 MB  
-
-
-
-## Development**Supports:** Android 5.0+🚆 **Real-Time Tracking**
-
-
-
-### Prerequisites
-
-- Node.js 16+ 
-
-- npm or pnpm[Download Latest Release](https://github.com/HugoLi0213/hkmtrvue/releases)## 📱 What is HKMTRVUE?- Live arrival times updated every 10 seconds
-
-- Android Studio (for Android development)
-
-
-
-### Quick Start
-
-✅ Universal - works on all devices  - All MTR lines & Light Rail routes supported
-
-```bash
-
-# Clone repository✅ Optimized size (40% smaller)  
-
 git clone https://github.com/HugoLi0213/hkmtrvue.git
-
-cd hkmtrvue✅ No Google Play requiredHKMTRVUE is a modern, real-time train tracking app for Hong Kong's MTR and Light Rail systems. Get live arrival times, platform information, and route details - all updated every 10 seconds from official DATA.GOV.HK sources.- Platform and direction information
-
-
-
-# Install dependencies
-
+cd hkmtrvue
 npm install
+npm run dev   # starts Vite dev server
+```
 
-</td>
+Build production bundle:
 
-# Start development server
-
-npm run dev<td align="center" width="50%">
-
-
-
-# Build for production### ✨ Key Highlights🎨 **Beautiful Design**
-
+```bash
 npm run build
+```
+Output goes to `dist/` (consumed by Capacitor for the Android build).
 
-```### 🌐 Web App
+Preview the production build locally:
 
+```bash
+npm run preview
+```
 
+## Android Build (Capacitor)
 
-### Android Development- Clean, modern interface
+1. Create fresh web assets:
+  ```bash
+  npm run build
+  ```
+2. Sync to native:
+  ```bash
+  npx cap sync android
+  ```
+3. Open in Android Studio (or run Gradle):
+  * Android Studio: Open `android/` folder → build / run.
+  * Command line (Windows):
+    ```cmd
+    cd android
+    gradlew.bat assembleRelease
+    ```
+4. APK/AAB outputs: `android/app/build/outputs/apk/` (split + universal builds if enabled in `app/build.gradle`).
 
+Signing: Current repository configuration still uses debug signing for generated release artifacts (no production keystore committed). Create your own keystore before distribution on stores.
 
+## Key Configuration (Android)
 
-```bash**No Installation Required**  
+* ABI splits & universal APK: defined in `android/app/build.gradle` under `splits { abi { ... } }`
+* Resource shrinking + code minification: `minifyEnabled true`, `shrinkResources true` (release build type)
+* ProGuard rules: `android/app/proguard-rules.pro`
+* Manifest enhancements: screen support + hardware acceleration enabled
 
-# Build web assets
+## Development Notes
 
-npm run build**Works on:** Any browser- 🚆 **Real-Time Tracking** - Live arrivals updated every 10 seconds- Dark & Light mode support
+* Manual refresh only: To add auto refresh, introduce an interval inside `onMounted` in `MtrTrain.vue` & `LightRail.vue` and clear it on unmount.
+* Peak hour analysis utility (`frequencyAnalyzer`) collects data but related UI (PeakHourIndicator) is disabled; reinstate by uncommenting import & template block once component exists.
+* Large single‑file components (`LightRail.vue`, `MtrTrain.vue`) could be refactored into smaller subcomponents for maintainability.
 
+## Roadmap (Suggestions)
 
+* Implement auto polling with exponential backoff on errors
+* Integrate favorites/bookmarks (currently unused `useFavoriteStations.ts` / related components)
+* Restore Peak Hour Indicator UI
+* Add Vue Router for cleaner navigation & potential deep links (e.g. line/station parameters)
+* Add PWA support (service worker + offline shell)
+* Unit tests for utility helpers & composables
 
-# Sync with Capacitor
+## Limitations
 
-npx cap sync android
+* No offline caching beyond browser defaults
+* No error toast system (inline error blocks only)
+* Light Rail component is very large ( > 2k lines ) making future changes harder
+* No production signing keystore or CI pipeline in repo
 
-[Launch Web App](https://hkmtrvue.vercel.app)- 🎨 **Beautiful Interface** - Clean design with dark/light themes- Responsive for all devices
+## License
+
+MIT License – see `LICENSE`.
+
+## Acknowledgements
+
+* Hong Kong Government & DATA.GOV.HK for open transport data
+* MTR Corporation (source of the real‑time schedules via public API)
+
+---
+Made in Hong Kong. Contributions & issue reports welcome.
 
 # Open in Android Studio
 
