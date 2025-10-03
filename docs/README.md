@@ -135,10 +135,7 @@ All documentation follows these principles:
 
 ## 📞 Need Help?
 
-If you can't find what you're looking for:
-- 🐛 Report issues: [GitHub Issues](https://github.com/HugoLi0213/hkmtrvue/issues)
-- 💬 Ask questions: [GitHub Discussions](https://github.com/HugoLi0213/hkmtrvue/discussions)
-- 📧 Contact: [Repository Owner](https://github.com/HugoLi0213)
+📧 Contact: [Repository Owner](https://github.com/HugoLi0213)
 
 ---
 
